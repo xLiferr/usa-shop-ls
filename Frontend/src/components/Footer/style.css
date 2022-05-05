@@ -1,0 +1,66 @@
+.footer-bg {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0px 0px 0px;
+  background-color: var(--iris-blue);
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.footer-webpay img {
+  width: 250px;
+}
+
+.footer-section h4 {
+  padding-left: 10px;
+  border-left: 3px solid var(--pink);
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.footer-section button {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #fff;
+  border: 0;
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.footer-section button:hover {
+  border-bottom: 2px solid var(--pink);
+}
+
+.footer-section a {
+  display: flex;
+  text-decoration: none;
+}
+
+.footer-section a img {
+  width: 24px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.footer-section a span {
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 0px 5px 0px;
+  color: #fff;
+  background-color: var(--pink);
+}
