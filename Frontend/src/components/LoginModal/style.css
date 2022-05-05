@@ -1,0 +1,128 @@
+.lm-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lm-bg .lm-border {
+  width: 450px;
+  min-height: 100px;
+  background: var(--iris-blue);
+  position: relative;
+  padding: 5px;
+}
+
+.lm-bg .lm-border .lm-content {
+  background-color: #fff;
+  max-width: 450px;
+  min-height: 300px;
+  padding: 20px 30px 20px 30px;
+}
+
+.lm-close {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -15px;
+  margin-right: -25px;
+}
+
+.lm-close img{
+  width: 25px;
+  height: 25px;
+}
+
+.lm-content .lm-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lm-header .lm-header-title { 
+  color: var(--pink);
+  font-size: 26px;
+}
+
+.lm-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.lm-input {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.lm-input input {
+  color: var(--iris-blue);
+  font-size: 20px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 350px;
+  border: none;
+  border-bottom: 2px solid var(--pink);
+}
+
+.lm-input input:focus { 
+  outline:none; 
+  border-bottom: 2px solid var(--iris-blue);
+}
+
+.lm-input label {
+  color: var(--pink); 
+  font-size: 20px;
+  position:absolute;
+  pointer-events: none;
+  left:5px;
+  top: 5px;
+  transition:0.2s ease all; 
+}
+
+.lm-input input:focus ~ label, .lm-input input:valid ~ label {
+  top: -15px;
+  font-size: 16px;
+  color: var(--iris-blue);
+}
+
+.lm-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.lm-button button { 
+  font-size: 20px;
+  color: var(--pink);
+  border-radius: 15px;
+  width: 200px;
+  border: 2px solid var(--pink);
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.lm-button button:hover {
+  color: #fff;
+  background-color: var(--iris-blue);
+  border: 2px solid var(--iris-blue);
+}
+
+.lm-others {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lm-others button {
+  font-size: 14px;
+  color: var(--pink);
+  border: 0;
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.lm-others button:hover {
+  color: var(--iris-blue);
+}
