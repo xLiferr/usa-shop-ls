@@ -1,7 +1,15 @@
 import React from "react";
+import { Footer } from '../../components/Footer'
+import { Header } from '../../components/Header'
+{/*import { LoginModal } from '../../components/LoginModal'*/}
 
 export const Home = () => {
+  
   return (
-    <h1>Hola</h1>
+    <div>
+      <Header/>
+      {/*<LoginModal/>*/}
+      <Footer />
+    </div>
   );
 }
