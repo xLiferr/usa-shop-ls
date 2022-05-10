@@ -8,7 +8,7 @@
     max-width: 100vw;
     display: flex;
     height: 100px;
-    background-color: var(--iris-blue);
+    background-color: #fff;
     justify-content: space-between;
     align-items: center;
     padding-left: 10vw;
@@ -17,8 +17,18 @@
 }
 
 .header-logo {
-    max-height: 100px;
-    width: 100px;
+    max-height: 75px;
+    width: 75px;
+}
+
+.header-USA{
+    display: flex;
+    text-decoration: none;
+}
+
+.header-USA h3{
+    font-size: 30px;
+    color: var(--pink);
 }
 
 
@@ -35,8 +45,30 @@
 
 .header-info a span {
     font-size: 16px;
-    color: #fff;
+    color: var(--pink);
     border: 0;
     transition: 0.2s ease all;
     background-color: transparent;
+}
+
+.header-envios {
+    color: var(--pink);
+}
+
+.search-logo{
+    width: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.header-busqueda{
+    align-items: end;
+    width: 500px;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-input-buscar{
+    width: 50%;
 }
