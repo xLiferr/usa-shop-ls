@@ -1,0 +1,84 @@
+.ap-content h3 {
+  color: var(--pink);
+  font-size: 22px;
+}
+
+.ap-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-form-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.ap-form-item h4 {
+  color: var(--pink);
+  font-size: 18px;
+  width: 200px;
+}
+
+.ap-form-item input {
+  width: 350px;
+  height: 20px;
+  background-color: none;
+  border: 2px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 16px;
+  transition: 0.2s ease-in;
+}
+
+.ap-form-item textarea {
+  width: 350px;
+  height: 100px;
+  background-color: none;
+  border: 2px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 16px;
+  transition: 0.2s ease-in;
+}
+
+.ap-form-item select {
+  width: 375px;
+  height: 40px;
+  background-color: none;
+  border: 2px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 16px;
+  transition: 0.2s ease-in;
+}
+
+.ap-form-item input:focus, textarea:focus{
+  border: 2px solid var(--pink);
+}
+
+.ap-form-buttons input{
+  background-color: var(--iris-blue);
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s ease-in;
+}
+
+.ap-form-buttons input:hover {
+  background-color: var(--pink);
+}
