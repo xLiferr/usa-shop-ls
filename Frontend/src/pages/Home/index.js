@@ -2,7 +2,8 @@ import React from "react";
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Categorys } from '../../components/Categorys'
-{/*import { LoginModal } from '../../components/LoginModal'*/}
+import { LoginModal } from '../../components/LoginModal'
+import { RegisterModal } from '../../components/RegisterModal'
 
 export const Home = () => {
   
@@ -10,7 +11,8 @@ export const Home = () => {
     <div>
       <Header/>
       <Categorys/>
-      {/*<LoginModal/>*/}
+      {/*<LoginModal/>
+      <RegisterModal/>*/}
       <Footer />
     </div>
   );
