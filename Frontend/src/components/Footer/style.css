@@ -1,6 +1,4 @@
 .footer-bg {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   padding: 10px 0px 0px 0px;
   background-color: var(--iris-blue);
