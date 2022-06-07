@@ -4,7 +4,6 @@ import "./style.css";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Categorys } from "../../components/Categorys";
-import { ProductCard } from "../../components/ProductCard";
 import { AddProduct } from "../../components/AddProduct";
 
 export const WebAdmin = () => {
