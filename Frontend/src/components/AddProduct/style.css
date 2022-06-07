@@ -1,3 +1,10 @@
+.ap-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+}
+
 .ap-content h3 {
   color: var(--pink);
   font-size: 22px;
@@ -5,24 +12,25 @@
 
 .ap-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 }
 
 .ap-form-item {
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
 .ap-form-item h4 {
   color: var(--pink);
   font-size: 18px;
-  width: 200px;
+  width: 150px;
 }
 
 .ap-form-item input {
-  width: 350px;
+  width: 400px;
   height: 20px;
   background-color: none;
   border: 2px solid var(--iris-blue);
@@ -36,7 +44,7 @@
 }
 
 .ap-form-item textarea {
-  width: 350px;
+  width: 400px;
   height: 100px;
   background-color: none;
   border: 2px solid var(--iris-blue);
@@ -50,7 +58,7 @@
 }
 
 .ap-form-item select {
-  width: 375px;
+  width: 425px;
   height: 40px;
   background-color: none;
   border: 2px solid var(--iris-blue);
