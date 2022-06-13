@@ -1,4 +1,4 @@
-.ap-header {
+.wa-ap-header {
   display: flex;
   background-color: #fff;
   padding-left: 50px;
@@ -7,7 +7,7 @@
   box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
 }
 
-.ap-content {
+.wa-ap-content {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,13 +15,13 @@
   padding: 20px;
 }
 
-.ap-form {
+.wa-ap-form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.ap-form-item {
+.wa-ap-form-item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,13 +29,13 @@
   margin-bottom: 15px;
 }
 
-.ap-form-item h4 {
+.wa-ap-form-item h4 {
   color: var(--pink);
   font-size: 18px;
   width: 125px;
 }
 
-.ap-form-item input {
+.wa-ap-form-item input {
   width: 350px;
   height: 20px;
   background-color: none;
@@ -49,7 +49,7 @@
   transition: 0.2s ease-in;
 }
 
-.ap-form-item textarea {
+.wa-ap-form-item textarea {
   width: 350px;
   height: 100px;
   background-color: none;
@@ -63,7 +63,7 @@
   transition: 0.2s ease-in;
 }
 
-.ap-form-item select {
+.wa-ap-form-item select {
   width: 375px;
   height: 40px;
   background-color: none;
@@ -77,11 +77,11 @@
   transition: 0.2s ease-in;
 }
 
-.ap-form-item input:focus, textarea:focus{
+.wa-ap-form-item input:focus, textarea:focus{
   border: 2px solid var(--pink);
 }
 
-.ap-form-buttons input{
+.wa-ap-form-buttons input{
   background-color: var(--iris-blue);
   border: none;
   border-radius: 15px;
@@ -93,11 +93,11 @@
   transition: 0.2s ease-in;
 }
 
-.ap-form-buttons input:hover {
+.wa-ap-form-buttons input:hover {
   background-color: var(--pink);
 }
 
-.ap-preview {
+.wa-ap-preview {
   display: flex;
   justify-content: center;
   align-items: center;
