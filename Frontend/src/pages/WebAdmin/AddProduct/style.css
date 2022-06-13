@@ -1,18 +1,24 @@
-.ap-content {
+.ap-header {
   display: flex;
-  flex-direction: column;
-  padding: 0px 10px 0px 10px;
-  width: 100%;
+  background-color: #fff;
+  padding-left: 50px;
+  font-size: 22px;
+  color: var(--iris-blue);
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
 }
 
-.ap-content h3 {
-  color: var(--pink);
-  font-size: 22px;
+.ap-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 
 .ap-form {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .ap-form-item {
@@ -26,11 +32,11 @@
 .ap-form-item h4 {
   color: var(--pink);
   font-size: 18px;
-  width: 150px;
+  width: 125px;
 }
 
 .ap-form-item input {
-  width: 400px;
+  width: 350px;
   height: 20px;
   background-color: none;
   border: 2px solid var(--iris-blue);
@@ -44,7 +50,7 @@
 }
 
 .ap-form-item textarea {
-  width: 400px;
+  width: 350px;
   height: 100px;
   background-color: none;
   border: 2px solid var(--iris-blue);
@@ -58,7 +64,7 @@
 }
 
 .ap-form-item select {
-  width: 425px;
+  width: 375px;
   height: 40px;
   background-color: none;
   border: 2px solid var(--iris-blue);
@@ -89,4 +95,11 @@
 
 .ap-form-buttons input:hover {
   background-color: var(--pink);
+}
+
+.ap-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
