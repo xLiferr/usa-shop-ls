@@ -16,7 +16,11 @@ export const WAProducts = () => {
   const [searchedProduct, setSearchedProduct] = useState("");
   const [products, setProducts] = useState([]);
 
-  const deleteHandler = (car) => {
+  const editHandler = (product) => {
+
+  }
+
+  const deleteHandler = (product) => {
     Swal.fire({
       title: '¿Eliminar producto?',
       text: 'Si eliminas el producto, se eliminará de forma permanente de la tienda.',
@@ -28,27 +32,16 @@ export const WAProducts = () => {
       confirmButtonText: 'Sí, eliminar producto'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete('')
-          .then((response) => {
-            if (response.status === 200) {
-              Swal.fire({
-                title: 'Producto eliminado!',
-                text: 'El producto se ha eliminado correctamente.',
-                icon: 'success',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#00AFB9',
-              })
-            } else if (response.status >= 400) {
-              Swal.fire({
-                title: 'Error inesperado!',
-                text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
-                icon: 'error',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#00AFB9',
-              })
-            }
-          })
-          .catch((error) => {
+        axios.delete('').then((response) => {
+          if (response.status === 200) {
+            Swal.fire({
+              title: 'Producto eliminado!',
+              text: 'El producto se ha eliminado correctamente.',
+              icon: 'success',
+              confirmButtonText: 'Continuar',
+              confirmButtonColor: '#00AFB9',
+            })
+          } else if (response.status >= 400) {
             Swal.fire({
               title: 'Error inesperado!',
               text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
@@ -56,7 +49,16 @@ export const WAProducts = () => {
               confirmButtonText: 'Continuar',
               confirmButtonColor: '#00AFB9',
             })
+          }
+        }).catch((error) => {
+          Swal.fire({
+            title: 'Error inesperado!',
+            text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
+            icon: 'error',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#00AFB9',
           })
+        })
       }
     })
   }
@@ -77,7 +79,7 @@ export const WAProducts = () => {
             <div className="wap-product-name"><h3>{product.name}</h3></div>
             <div className="wap-product-price"><h4>${product.price}</h4></div>
             <div className="wap-product-buttons">
-              <img src={editIcon} alt="" />
+              <img src={editIcon} alt="" onClick={() => editHandler(product)}/>
               <img src={deleteIcon} alt="" onClick={() => deleteHandler(product)} />
             </div>
           </div>
@@ -102,7 +104,7 @@ export const WAProducts = () => {
         setProducts([response.data])
       })
       .catch((error) => console.log(error))
-    
+
   }, [])
 
   return (
