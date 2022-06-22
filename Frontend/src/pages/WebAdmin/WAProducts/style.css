@@ -1,0 +1,142 @@
+.wap-header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+}
+
+.wap-title {
+  padding-left: 50px;
+  font-size: 22px;
+  color: var(--iris-blue);
+  width: 400px;
+}
+
+.wap-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.wap-input, .wap-filters {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+
+.wap-input input {
+  width: 300px;
+  height: 15px;
+  background-color: none;
+  border: 3px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.wap-input input:focus{
+  border: 3px solid var(--pink);
+}
+
+.wap-input img {
+  width: 30px;
+}
+
+.wap-filters label {
+  margin-right: 10px;
+  color: var(--iris-blue);
+  font-size: 20px;
+}
+
+.wap-filters select {
+  width: 200px;
+  height: 40px;
+  background-color: none;
+  border: 3px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.wap-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.wap-product {
+  width: 300px;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px -10px rgb(0, 0, 0, 0.5);
+}
+
+.wap-product-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wap-product-image img {
+  width: 200px;
+}
+
+.wap-product-name, .wap-product-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  color: var(--pink);
+}
+
+.wap-product-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.wap-product-buttons img {
+  width: 30px;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+}
+
+.wap-product-buttons img:hover {
+  background-color: rgba(184, 182, 182, 0.301);
+}
+
+.wap-no-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--pink);  
+}
+
+.wap-add-button {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-around;
+  border: 3px solid #f07067a6;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--iris-blue);
+  transition: 0.3 ease-in-out;
+}
+
+.wap-add-button:hover {
+  background-color: #f07067a6;
+  color: #fff;
+}
