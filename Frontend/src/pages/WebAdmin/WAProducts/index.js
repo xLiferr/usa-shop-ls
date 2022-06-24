@@ -6,18 +6,23 @@ import "./style.css";
 // Components
 import { Footer } from "../../../components/Footer";
 import { SidebarWA } from "../../../components/SidebarWA";
+import { ProductForm } from "../../../components/ProductForm";
 // Icons
 import search from "../../../images/search-ib.png";
 import deleteIcon from "../../../images/delete.png";
 import editIcon from "../../../images/edit.png";
 import addProducts from "../../../images/add-products.png";
+import back from "../../../images/back.png";
 
 export const WAProducts = () => {
   const [searchedProduct, setSearchedProduct] = useState("");
   const [products, setProducts] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
   const editHandler = (product) => {
-
+    setSelectedProduct({ ...product });
+    setIsEditing(true);
   }
 
   const deleteHandler = (product) => {
@@ -79,7 +84,7 @@ export const WAProducts = () => {
             <div className="wap-product-name"><h3>{product.name}</h3></div>
             <div className="wap-product-price"><h4>${product.price}</h4></div>
             <div className="wap-product-buttons">
-              <img src={editIcon} alt="" onClick={() => editHandler(product)}/>
+              <img src={editIcon} alt="" onClick={() => editHandler(product)} />
               <img src={deleteIcon} alt="" onClick={() => deleteHandler(product)} />
             </div>
           </div>
@@ -99,11 +104,11 @@ export const WAProducts = () => {
   }, [filterProducts, products.length])
 
   useEffect(() => {
-    axios.get("")
+    /*axios.get("")
       .then((response) => {
         setProducts([response.data])
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error))*/
 
   }, [])
 
@@ -126,9 +131,18 @@ export const WAProducts = () => {
             </div>
           </div>
         </div>
-        <div className="wap-content">
-          {showProducts}
-        </div>
+        {isEditing ? (
+          <div className="wap-edit">
+            <button onClick={() => setIsEditing(false)}>
+              <img src={back} alt=""/>
+              Atrás
+            </button>
+            <div className="wap-edit-header">
+              <h3>Modificar producto</h3>
+            </div>
+            <ProductForm product={selectedProduct}/>
+          </div>
+        ) : (<div className="wap-content">{showProducts}</div>)}
       </div>
       <Footer />
     </>
