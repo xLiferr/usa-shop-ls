@@ -4,17 +4,12 @@ import Swal from "sweetalert2";
 import deleteIcon from "../../images/delete.png";
 import "./style.css";
 
-export const ProductForm = ({ id, name, description, category, stock, price, images = []}) => {
+export const ProductForm = ({product = {}}) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const submitProduct = (event) => {
     event.preventDefault();
     axios.post("", {
-      id: id,
-      name: name,
-      category: category,
-      stock: stock,
-      price: price,
-      images: images
+      product: product
     }).then((response) => {
       if (response.status === 200) {
         Swal.fire({
@@ -44,11 +39,12 @@ export const ProductForm = ({ id, name, description, category, stock, price, ima
     })
   }
   const imageHandler = (event) => {
-    setSelectedImages((previusImages) => previusImages.concat(Array.from(event.target.files).map((image) => {return URL.createObjectURL(image)})));
+    if (selectedImages) setSelectedImages((previusImages) =>previusImages.concat(Array.from(event.target.files)));
+    else setSelectedImages(Array.from(event.target.files));
   }
 
   useEffect(() => {
-    setSelectedImages(images)
+    setSelectedImages(product ? (product.images) : ([]));
   }, [])
   return (
     <div className="prodForm-content">
@@ -56,11 +52,11 @@ export const ProductForm = ({ id, name, description, category, stock, price, ima
         <div>
           <div className="prodForm-form-item">
             <h4>Nombre</h4>
-            <input type="text" defaultValue={name} onChange={(e) => name = e.target.value} required />
+            <input type="text" defaultValue={product.name} onChange={(e) => product.name = e.target.value} required />
           </div>
           <div className="prodForm-form-item">
             <h4>Descripción</h4>
-            <textarea defaultValue={description} placeholder="Escriba la descripción de producto" onChange={(e) => description = e.target.value} required />
+            <textarea defaultValue={product.description} placeholder="Escriba la descripción de producto" onChange={(e) => product.description = e.target.value} required />
           </div>
           <div className="prodForm-form-item">
             <h4>Categoría</h4>
@@ -70,11 +66,11 @@ export const ProductForm = ({ id, name, description, category, stock, price, ima
           </div>
           <div className="prodForm-form-item">
             <h4>Stock</h4>
-            <input type="number" min="1" defaultValue={stock} onChange={(e) => stock = e.target.value} required />
+            <input type="number" min="1" defaultValue={product.stock} onChange={(e) => product.stock = e.target.value} required />
           </div>
           <div className="prodForm-form-item">
             <h4>Precio</h4>
-            <input type="text" required defaultValue={price} onChange={(e) => price = e.target.value} placeholder="Ej: 19.999" />
+            <input type="text" required defaultValue={product.price} onChange={(e) => product.price = e.target.value} placeholder="Ej: 19.999" />
           </div>
           <div className="prodForm-form-item">
             <h4>Fotos</h4>
@@ -90,14 +86,19 @@ export const ProductForm = ({ id, name, description, category, stock, price, ima
       </form>
       <div className="prodForm-preview">
         {selectedImages ? (          
-          selectedImages.map((image, key) => {           
+          selectedImages.map((image, key) => {   
+            let objUrl = URL.createObjectURL(image);
             return (
               <div className="prodForm-image" key={key}>
-                <img className="prodForm-image-preview" src={image} alt="" />
+                <img className="prodForm-image-preview" src={objUrl} alt="" />
                 <img 
                   className="prodForm-image-button" 
                   src={deleteIcon} 
-                  onClick={() => setSelectedImages(selectedImages.filter((i) => i !== image))} 
+                  onClick={() => {
+                    URL.revokeObjectURL(objUrl);
+                    setSelectedImages(selectedImages.filter((i) => i !== image))
+                    console.log(selectedImages)
+                  }} 
                   alt="" 
                 />
               </div>
