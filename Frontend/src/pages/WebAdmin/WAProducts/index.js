@@ -117,7 +117,7 @@ export const WAProducts = () => {
       <SidebarWA />
       <div className="wa-products">
         <div className="wap-header">
-          <div className="wap-title"><h3>Productos</h3></div>
+          <div className="wap-title"><h2>Productos</h2></div>
           <div className="wap-search">
             <div className="wap-input">
               <img src={search} alt="" />

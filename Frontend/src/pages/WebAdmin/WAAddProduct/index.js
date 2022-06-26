@@ -11,7 +11,7 @@ export const WAAddProduct = () => {
       <SidebarWA />
       <div className="wa-ap-page">
         <div className="wa-ap-header">
-          <h3>Agregar un producto</h3>
+          <h2>Agregar un producto</h2>
         </div>
         <ProductForm />
       </div>
