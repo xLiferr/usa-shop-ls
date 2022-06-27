@@ -1,0 +1,21 @@
+.swiper {
+  width: 95%;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  color: var(--iris-blue);
+}
+
+.swiper-pagination-bullet {
+  background: var(--iris-blue);
+  width: 20px;
+  height: 5px;
+  border-radius: 25px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+}
