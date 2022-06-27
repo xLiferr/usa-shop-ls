@@ -1,0 +1,22 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.css";
+
+export const ProductCard = ({product}) => {
+  return (
+    <Link className="prodCard-bg" to="/">
+      <div className="prodCard-section">
+        <img src={product.images[0]} alt="" />
+      </div>
+      <div className="prodCard-section">
+        <h3>{product.name}</h3>
+      </div>
+      <div className="prodCard-section">
+        <p>{product.description}</p>
+      </div>
+      <div className="prodCard-section">
+        <h2>${product.price}</h2>
+      </div>
+    </Link>
+  );
+}
