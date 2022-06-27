@@ -134,16 +134,6 @@ export const WACategories = () => {
   }
 
   useEffect(() => {
-    setCategories([{
-      id: 1,
-      name: "Hombre"
-    },{
-      id: 2,
-      name: "Mujer"
-    },{
-      id: 3,
-      name: "Accesorios"
-    }])
     /*
     axios.get('').then((response) => {
       setCategories(response);
@@ -187,7 +177,7 @@ export const WACategories = () => {
                   })}
                 </tbody>
               </table>
-            ) : ("")}
+            ) : (<h2>No existen categorías registradas.</h2>)}
           </div>
         </div>
       </div>
