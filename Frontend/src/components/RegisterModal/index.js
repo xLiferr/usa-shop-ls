@@ -8,7 +8,7 @@ export const RegisterModal = ({closeModal}) => {
         <div className="rm-bg">
             <div className="rm-border">
                 <div className="rm-content">
-                    <button className="lm-close" onClick={() => closeModal(false)} >
+                    <button className="rm-close" onClick={() => closeModal(false)} >
                         <img src={close} alt=""/>
                     </button>
                     <div className="rm-header">

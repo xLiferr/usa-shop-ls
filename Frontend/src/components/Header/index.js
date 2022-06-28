@@ -49,18 +49,13 @@ export const Header = () =>{
                     onClick={() => {
                         setOpenModal(true);
                     }}>
-                    <img src={user} alt="" className = "header-insta"/>
-                    <span>Iniciar sesión</span>
+                    <img src={user} alt="" className = "bn-modal"/>
+                    <div className="bn-info">
+                        <h2 >Iniciar sesión</h2>
+                    </div>
                 </button>
                 {openModal && <LoginModal closeModal={setOpenModal}/>}
-                <button className="openModal"
-                    onClick={() => {
-                        setOpenModal(true);
-                    }}>
-                    <img src={user} alt="" className = "header-insta"/>
-                    <span>Registrarse</span>
-                </button>
-                {openModal && <RegisterModal closeModal={setOpenModal}/>}
+
             </div>
         </div>
     );

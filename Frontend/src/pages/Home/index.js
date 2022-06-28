@@ -16,7 +16,7 @@ export const Home = () => {
       <Header/>
       <Categorys/>
       <div className="home-content">
-        <Carousel products={[
+        {/*<Carousel products={[
           {
             id: 1,
             name: "Mochila",
@@ -66,7 +66,7 @@ export const Home = () => {
             images: [icon],
             price: 19990
           }
-        ]}/>
+        ]}/>*/}
       </div>
       {/*<LoginModal/>
       <RegisterModal/>*/}
