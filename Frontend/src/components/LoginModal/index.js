@@ -4,12 +4,14 @@ import "./style.css";
 import logo from "../../images/logo.png";
 import close from "../../images/close.png";
 
-export const LoginModal = () => {
+export const LoginModal = ({ closeModal }) => {
   return (
     <div className="lm-bg">
       <div className="lm-border">
         <div className="lm-content">
-          <div className="lm-close"><img src={close} alt=""/></div>
+          <button className="lm-close" onClick={() => closeModal(false)} >
+            <img src={close} alt=""/>
+          </button>
           <div className="lm-header">
             <div className="lm-header-title"><h3>¡Bienvenido!</h3></div>
             <div className="lm-header-logo"><img src={logo} alt=""/></div>

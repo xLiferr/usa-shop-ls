@@ -3,12 +3,14 @@ import "./style.css";
 import logo from "../../images/logo.png";
 import close from "../../images/close.png";
 
-export const RegisterModal = () => {
+export const RegisterModal = ({closeModal}) => {
     return(
         <div className="rm-bg">
             <div className="rm-border">
                 <div className="rm-content">
-                    <div className="rm-close"><img src={close} alt=""/></div>
+                    <button className="lm-close" onClick={() => closeModal(false)} >
+                        <img src={close} alt=""/>
+                    </button>
                     <div className="rm-header">
                         <div className="rm-header-title"><h3>¡Bienvenido!</h3></div>
                         <div className="rm-header-logo"><img src={logo} alt=""/></div>

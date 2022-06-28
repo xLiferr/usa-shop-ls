@@ -4,14 +4,17 @@ import axios from "axios";
 import "./style.css";
 import logo from "../../images/logo.png";
 import user from '../../images/user.png'
-import search from '../../images/search.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {LoginModal} from '../LoginModal';
+import {RegisterModal} from '../RegisterModal';
 
 export const Header = () =>{
 
     const [busqueda, setBusqueda] = useState("");
+
+    const [openModal,setOpenModal] = useState(false);
 
     const handleChange=e=>{
         setBusqueda(e.target.value);
@@ -42,12 +45,22 @@ export const Header = () =>{
                         <FontAwesomeIcon icon={faSearch}/>
                     </button>
                 </div>
-                <div className="header-info">
-                    <a href="" target="_blank" rel="noreferrer">
-                        <img src={user} alt="" className = "header-insta"/>
-                        <span>Hola!, Inicia sesión</span>
-                    </a>
-                </div>
+                <button className="openModal"
+                    onClick={() => {
+                        setOpenModal(true);
+                    }}>
+                    <img src={user} alt="" className = "header-insta"/>
+                    <span>Iniciar sesión</span>
+                </button>
+                {openModal && <LoginModal closeModal={setOpenModal}/>}
+                <button className="openModal"
+                    onClick={() => {
+                        setOpenModal(true);
+                    }}>
+                    <img src={user} alt="" className = "header-insta"/>
+                    <span>Registrarse</span>
+                </button>
+                {openModal && <RegisterModal closeModal={setOpenModal}/>}
             </div>
         </div>
     );
