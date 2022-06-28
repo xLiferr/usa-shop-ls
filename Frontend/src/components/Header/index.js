@@ -1,14 +1,13 @@
 import React from "react";
 import {useEffect, useState} from 'react';
-import axios from "axios";
 import "./style.css";
 import logo from "../../images/logo.png";
+import carrito from "../../images/carrito.png";
 import user from '../../images/user.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {LoginModal} from '../LoginModal';
-import {RegisterModal} from '../RegisterModal';
 
 export const Header = () =>{
 
@@ -55,7 +54,12 @@ export const Header = () =>{
                     </div>
                 </button>
                 {openModal && <LoginModal closeModal={setOpenModal}/>}
-
+                <button className="header-carrito">
+                    <img src = {carrito} alt='' className = "header-carritoIMG"/>
+                    <div className="bn-info">
+                        <h2 >Carrito</h2>
+                    </div>
+                </button>
             </div>
         </div>
     );

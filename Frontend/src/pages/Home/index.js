@@ -3,8 +3,6 @@ import "./style.css";
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Categorys } from '../../components/Categorys'
-import { LoginModal } from '../../components/LoginModal'
-import { RegisterModal } from '../../components/RegisterModal'
 import { Carousel } from '../../components/Carousel'
 
 import icon from '../../images/delete.png';
@@ -68,8 +66,6 @@ export const Home = () => {
           }
         ]}/>*/}
       </div>
-      {/*<LoginModal/>
-      <RegisterModal/>*/}
       <Footer />
     </div>
   );

@@ -85,20 +85,34 @@
     padding-bottom: 15px;
   }
   
-  }
+}
 
-  .openModal{
+.openModal{
+display: flex;
+background-color: transparent;
+border: none;
+cursor: pointer;
+transition-duration: 250ms;
+align-items: center;
+}
+
+
+.bn-info h2{
+font-size: 25px;
+color: var(--pink);
+border: 0;
+}
+
+.header-carrito{
     display: flex;
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition-duration: 250ms;
     align-items: center;
-  }
+}
 
-
-  .bn-info h2{
-    font-size: 25px;
-    color: var(--pink);
-    border: 0;
-  }
+.header-carritoIMG{
+    max-height: 30px;
+    width: 30px;
+}

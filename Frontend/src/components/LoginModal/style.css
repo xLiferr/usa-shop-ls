@@ -28,6 +28,11 @@
 .lm-close {
   display: flex;
   justify-content: flex-end;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition-duration: 250ms;
+  align-items: center;
   margin-top: -15px;
   margin-right: -25px;
 }

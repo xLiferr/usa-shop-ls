@@ -9,6 +9,14 @@ import { WACategories } from './pages/WebAdmin/WACategories';
 import { WAOrders } from './pages/WebAdmin/WAOrders';
 import { WAClients } from './pages/WebAdmin/WAClients';
 
+//CATEGORIAS
+
+import { Accesorios } from './pages/Accesorios';
+import { Carteras } from './pages/Carteras';
+import { Hombre } from './pages/Hombre';
+import { Mochilas } from './pages/Mochilas';
+import { Mujer } from './pages/Mujer'; 
+
 import "./App.css";
 
 function App() {
@@ -23,6 +31,11 @@ function App() {
           <Route path="/wa-categorias" element={<WACategories />}></Route>
           <Route path="/wa-pedidos" element={<WAOrders />}></Route>
           <Route path="/wa-clientes" element={<WAClients />}></Route>
+          <Route path="/accesorios" element={<Accesorios />}></Route>
+          <Route path="/carteras" element={<Carteras />}></Route>
+          <Route path="/hombre" element={<Hombre />}></Route>
+          <Route path="/mochilas" element={<Mochilas />}></Route>
+          <Route path="/mujer" element={<Mujer />}></Route>
         </Routes>
       </Router>
     </div>
