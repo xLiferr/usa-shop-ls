@@ -21,12 +21,12 @@ __decorate([
 ], Order_detail.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", user_entity_1.User)
 ], Order_detail.prototype, "user", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => payment_detail_entity_1.Payment_detail, { nullable: true }),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'payment_id' }),
     __metadata("design:type", payment_detail_entity_1.Payment_detail)
 ], Order_detail.prototype, "payment", void 0);
 __decorate([

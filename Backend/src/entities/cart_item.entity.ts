@@ -9,11 +9,11 @@ export class Cart_item {
   id:number
 
   @OneToOne(() => Shopping_session)
-  @JoinColumn()
+  @JoinColumn( {name: 'session_id'} )
   session: Shopping_session
 
   @OneToOne(() => Product)
-  @JoinColumn()
+  @JoinColumn( {name: 'product_id'} )
   product: Product
 
   @Column()

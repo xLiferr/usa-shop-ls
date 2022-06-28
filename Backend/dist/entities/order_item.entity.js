@@ -21,12 +21,12 @@ __decorate([
 ], Order_item.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => order_detail_entity_1.Order_detail),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'order_id' }),
     __metadata("design:type", order_detail_entity_1.Order_detail)
 ], Order_item.prototype, "order", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => product_entity_1.Product),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'product_id' }),
     __metadata("design:type", product_entity_1.Product)
 ], Order_item.prototype, "product", void 0);
 __decorate([

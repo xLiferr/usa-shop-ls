@@ -20,7 +20,7 @@ __decorate([
 ], Payment_detail.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => order_detail_entity_1.Order_detail),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'order_id' }),
     __metadata("design:type", order_detail_entity_1.Order_detail)
 ], Payment_detail.prototype, "order", void 0);
 __decorate([

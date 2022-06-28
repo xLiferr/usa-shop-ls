@@ -7,7 +7,7 @@ export class User_address {
   id: number
 
   @OneToOne(() => User)
-  @JoinColumn()
+  @JoinColumn( {name: 'user_id'} )
   user: User
 
   @Column()

@@ -8,7 +8,7 @@ export class Payment_detail {
   id: number
 
   @OneToOne(() => Order_detail)
-  @JoinColumn()
+  @JoinColumn( {name:'order_id'} )
   order: Order_detail
 
   @Column()

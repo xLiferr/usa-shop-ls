@@ -7,7 +7,7 @@ export class User_payment {
   id: number
 
   @OneToOne(() => User)
-  @JoinColumn()
+  @JoinColumn( {name: 'user_id'} )
   user: User
 
   @Column()

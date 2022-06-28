@@ -10,7 +10,7 @@ export class Product {
   name: string
 
   @OneToOne(() => Product_category)
-  @JoinColumn()
+  @JoinColumn( {name:'category_id'} )
   category: Product_category
 
   @Column()

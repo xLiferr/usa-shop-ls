@@ -24,7 +24,7 @@ __decorate([
 ], Product.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => product_category_entity_1.Product_category),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: 'category_id' }),
     __metadata("design:type", product_category_entity_1.Product_category)
 ], Product.prototype, "category", void 0);
 __decorate([

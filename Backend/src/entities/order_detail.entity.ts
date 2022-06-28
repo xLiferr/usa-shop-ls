@@ -10,11 +10,11 @@ export class Order_detail{
   id: number
 
   @ManyToOne(() => User)
-  @JoinColumn()
+  @JoinColumn( {name: 'user_id'} )
   user: User
 
   @OneToOne(() => Payment_detail, {nullable: true})
-  @JoinColumn()
+  @JoinColumn( {name: 'payment_id'} )
   payment: Payment_detail
   
   @Column()

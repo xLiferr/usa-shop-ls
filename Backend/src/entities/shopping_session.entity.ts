@@ -8,7 +8,7 @@ export class Shopping_session{
   id: number
 
   @OneToOne(() => User)
-  @JoinColumn()
+  @JoinColumn( {name:'user_id'} )
   user: User
 
   @Column()

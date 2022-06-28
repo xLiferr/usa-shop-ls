@@ -9,11 +9,11 @@ export class Order_item {
   id: number
 
   @OneToOne(() => Order_detail)
-  @JoinColumn()
+  @JoinColumn( {name: 'order_id'} )
   order: Order_detail
   
   @OneToOne(() => Product)
-  @JoinColumn()
+  @JoinColumn( {name: 'product_id'} )
   product: Product
 
   @Column()

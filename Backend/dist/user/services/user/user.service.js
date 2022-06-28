@@ -38,7 +38,13 @@ let UserService = class UserService {
         newUser.name = body.name;
         newUser.second_name = body.second_name;
         newUser.telephone = body.telephone;
-        newUser.email = body.email;
+        const searchUser = await this.usersRepo.findOne({
+            where: { username: newUser.username }
+        });
+        console.log(searchUser);
+        if (searchUser) {
+            throw new common_1.BadRequestException('Se encuentra un usuario con el email asociado.');
+        }
         return this.usersRepo.save(newUser);
     }
 };
