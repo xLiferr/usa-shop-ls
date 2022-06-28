@@ -61,14 +61,28 @@
     margin-right: 5px;
 }
 
-.header-busqueda{
-    align-items: end;
-    width: 500px;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
+.inputBuscar{
+    width: 100% !important;
 }
 
-.header-input-buscar{
-    width: 50%;
-}
+.containerInput{
+    display: flex;
+    justify-content: flex-end;
+    }
+
+@media (max-width: 988px){
+  
+    .inputBuscar{
+      width: 100% !important;
+    }
+  
+    .App{
+      padding: 40px 5px;
+    }
+  
+    
+  .containerInput{
+    padding-bottom: 15px;
+  }
+  
+  }

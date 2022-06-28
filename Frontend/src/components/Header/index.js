@@ -1,10 +1,13 @@
 import React from "react";
 import {useEffect, useState} from 'react';
+import axios from "axios";
 import "./style.css";
 import logo from "../../images/logo.png";
-import search from "../../images/search.png"
-import instagram from "../../images/instagram.png";
 import user from '../../images/user.png'
+import search from '../../images/search.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Header = () =>{
 
@@ -28,15 +31,15 @@ export const Header = () =>{
                 <div className="header-envios">
                     <span> Productos en Chile son procesados en 2 - 5 días habiles </span>
                 </div>
-                <div className='header-busqueda'>
+                <div className="containerInput">
                     <input
-                        className = 'header-input-buscar'
+                        className="form-control inputBuscar"
                         value={busqueda}
-                        placeholder='Buscar producto'
+                        placeholder="Buscar producto"
                         onChange={handleChange}
                     />
-                    <button className="header-button">
-                        <img src = {search} alt='' className = "search-logo"/>
+                    <button className="btn btn-success">
+                        <FontAwesomeIcon icon={faSearch}/>
                     </button>
                 </div>
                 <div className="header-info">
