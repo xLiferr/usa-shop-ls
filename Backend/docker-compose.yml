@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  database:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=usa_shop
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=prologue2
+    ports:
+      - '5432:5432'
+    volumes:
+      - /postgres_data:/var/lib/postgresql
+volumes:
+  postgresql-volume:
+    external: true
