@@ -1,8 +1,14 @@
 .wa-ap-header {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
   background-color: #fff;
   padding-left: 50px;
-  font-size: 22px;
-  color: var(--iris-blue);
   box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+}
+
+.wa-ap-header h2 {
+  font-size: 30px;
+  color: var(--iris-blue);
 }

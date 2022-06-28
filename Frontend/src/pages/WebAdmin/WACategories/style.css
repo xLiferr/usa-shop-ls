@@ -1,13 +1,18 @@
 .wac-header {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
   flex-wrap: wrap;
   background-color: #fff;
   box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
 }
 
-.wac-title {
+.wac-title h2{
+  display: flex;
+  justify-content: flex-start;
   padding-left: 50px;
-  font-size: 22px;
+  font-size: 30px;
   color: var(--iris-blue);
   width: 400px;
 }
@@ -81,7 +86,6 @@
 .wac-table table thead {
   background-color: var(--iris-blue);
   color: #fff;
-  position: sticky;
   top: 0;
 }
 
