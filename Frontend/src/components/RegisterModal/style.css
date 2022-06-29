@@ -20,6 +20,8 @@
   }
   
   .rm-bg .rm-border .rm-content {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     max-width: 450px;
     min-height: 300px;
