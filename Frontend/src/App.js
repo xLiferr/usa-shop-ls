@@ -32,11 +32,11 @@ function App() {
             <Route path="/mujer" element={<Mujer />}></Route>
             <Route element={<ProtectedLayout allowedRoles={["Administrador"]}/>}>
               <Route path="/web-admin" element={<WebAdmin />}></Route>
-              <Route path="/wa-agregar-producto" element={<WAAddProduct />}></Route>
-              <Route path="/wa-productos" element={<WAProducts />}></Route>
-              <Route path="/wa-categorias" element={<WACategories />}></Route>
-              <Route path="/wa-pedidos" element={<WAOrders />}></Route>
-              <Route path="/wa-clientes" element={<WAClients />}></Route>
+              <Route path="/web-admin/agregar-producto" element={<WAAddProduct />}></Route>
+              <Route path="/web-admin/productos" element={<WAProducts />}></Route>
+              <Route path="/web-admin/categorias" element={<WACategories />}></Route>
+              <Route path="/web-admin/pedidos" element={<WAOrders />}></Route>
+              <Route path="/web-admin/clientes" element={<WAClients />}></Route>
             </Route>
           </Routes>
         </AuthProvider>
