@@ -11,7 +11,7 @@ import { ProductForm } from "../../../components/ProductForm";
 import search from "../../../images/search-ib.png";
 import deleteIcon from "../../../images/delete.png";
 import editIcon from "../../../images/edit.png";
-import addProducts from "../../../images/add-products.png";
+import addProducts from "../../../images/add.png";
 import back from "../../../images/back.png";
 
 export const WAProducts = () => {
@@ -94,7 +94,7 @@ export const WAProducts = () => {
       return (
         <div className="wap-no-products">
           <h2>No existen productos registrados en la base de datos.</h2>
-          <Link className="wap-add-button" to="/wa-agregar-producto">
+          <Link className="wap-add-button" to="/web-admin/agregar-producto">
             <img src={addProducts} alt="" />
             Agregar un producto
           </Link>
@@ -104,12 +104,11 @@ export const WAProducts = () => {
   }, [filterProducts, products.length])
 
   useEffect(() => {
-    /*axios.get("")
+    axios.get("http://localhost:3001/products/all")
       .then((response) => {
-        setProducts([response.data])
+        if (response.status === 200) setProducts(response.data);
       })
-      .catch((error) => console.log(error))*/
-
+      .catch((error) => setProducts([]))
   }, [])
 
   return (
