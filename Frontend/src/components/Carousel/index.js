@@ -38,7 +38,7 @@ export const Carousel = ({products}) => {
         }
       >
         {products.length > 0 ?
-          (products.map((product, key) => { return <SwiperSlide><ProductCard key={key} product={product}/></SwiperSlide>}))
+          (products.map((product, key) => { return <SwiperSlide key={key}><ProductCard product={product}/></SwiperSlide>}))
           : ("")}    
       </Swiper>
     </>
