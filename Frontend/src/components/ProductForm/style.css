@@ -27,7 +27,7 @@
 
 .prodForm-form-item input {
   width: 350px;
-  height: 20px;
+  height: 40px;
   background-color: none;
   border: 2px solid var(--iris-blue);
   outline: none;
@@ -41,7 +41,7 @@
 
 .prodForm-form-item textarea {
   width: 350px;
-  height: 100px;
+  height: 200px;
   background-color: none;
   border: 2px solid var(--iris-blue);
   outline: none;
@@ -141,4 +141,31 @@
 
 .prodForm-image-button:hover {
   background-color: rgba(184, 182, 182, 0.301);
+}
+
+.prodForm-missing-categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.prodForm-missing-button {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-around;
+  border: 3px solid #f07067a6;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--iris-blue);
+  transition: 0.3 ease-in-out;
+  margin-top: 15px;
+}
+
+.prodForm-missing-button:hover {
+  background-color: #f07067a6;
+  color: #fff;
 }
