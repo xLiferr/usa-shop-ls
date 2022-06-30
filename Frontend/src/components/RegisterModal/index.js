@@ -14,45 +14,41 @@ export const RegisterModal = ({ closeModal }) => {
     const [rut, setRut] = useState("");
     const [telephone, setTelephone] = useState("");
 
+    const confirmRegister = () => {
+        Swal.fire({
+            title: 'Registro exitoso!',
+            text: 'Usted se ha registrado correctamente en USA SHOP.',
+            icon: 'success',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#00AFB9',
+        })
+    }
+
+    const denyRegister = (message) => {
+        Swal.fire({
+            title: 'Error al registrar',
+            text: message,
+            icon: 'error',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#00AFB9',
+        })
+    }
+
     const handleRegister = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3001/user/register',
-            {
-                username: email,
-                password: password,
-                name: name,
-                second_name: secondName,
-                rut: rut,
-                telephone: telephone
-            }
-        ).then((response) => {
-            console.log(response)
-            if (response.status === 201) {
-              Swal.fire({
-                title: 'Registro exitoso!',
-                text: 'Usted se ha registrado correctamente en USA SHOP.',
-                icon: 'success',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#00AFB9',
-              })
-            } else if (response.status >= 400) {
-              Swal.fire({
-                title: 'Error inesperado!',
-                text: 'Hubo un error al intentar modificar el producto, Inténtelo nuevamente.',
-                icon: 'warning',
-                confirmButtonText: 'Continuar',
-                confirmButtonColor: '#00AFB9',
-              })
-            }
-          }).catch((error) => {
-            Swal.fire({
-              title: 'Error inesperado!',
-              text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
-              icon: 'error',
-              confirmButtonText: 'Continuar',
-              confirmButtonColor: '#00AFB9',
-            })
-          })
+        await axios.post('http://localhost:3001/user/register', {
+            username: email,
+            password: password,
+            name: name,
+            second_name: secondName,
+            rut: rut,
+            telephone: telephone
+        }).then((response) => {
+            if (response.status === 201) confirmRegister();              
+        }).catch((error) => {
+            if (error.response.status === 400) denyRegister(error.response.data.message);
+            
+        })
     }
     return (
         <div className="rm-bg">
@@ -65,7 +61,7 @@ export const RegisterModal = ({ closeModal }) => {
                         <div className="rm-header-title"><h3>¡Bienvenido!</h3></div>
                         <div className="rm-header-logo"><img src={logo} alt="" /></div>
                     </div>
-                    <div className="rm-form">
+                    <form className="rm-form" onSubmit={handleRegister}>
                         <div className="rm-input">
                             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                             <label>Correo electrónico</label>
@@ -91,13 +87,13 @@ export const RegisterModal = ({ closeModal }) => {
                             <label>RUT</label>
                         </div>
                         <div className="rm-input">
-                            <input type="tel" required value={telephone}  onChange={(e) => setTelephone(e.target.value)} />
+                            <input type="tel" required value={telephone} onChange={(e) => setTelephone(e.target.value)} />
                             <label>Teléfono (Ej. +56912345678)</label>
                         </div>
                         <div className="rm-buttons">
-                            <div className="rm-button"><button onClick={handleRegister}>Registrar</button></div>
+                            <div className="rm-button"><button type="submit">Registrar</button></div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
