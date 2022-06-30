@@ -5,7 +5,7 @@ import "./style.css";
 import logo from "../../images/logo.png";
 import menuOpen from "../../images/menuOpen.png";
 import menuClose from "../../images/menuClose.png";
-import addProducts from "../../images/add-products.png";
+import addProducts from "../../images/add.png";
 import categories from "../../images/categories.png";
 import clients from "../../images/clients.png";
 import orders from "../../images/orders.png";
@@ -35,31 +35,31 @@ export const SidebarWA = () => {
             </Link>
           </li>
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/wa-agregar-producto">
+            <Link className="wa-sidebar-link" to="/web-admin/agregar-producto">
               <img className="wa-sidebar-icon" src={addProducts} alt="" />
               Agregar un producto
             </Link>
           </li>
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/wa-productos">
+            <Link className="wa-sidebar-link" to="/web-admin/productos">
               <img className="wa-sidebar-icon" src={products} alt="" />
               Productos
             </Link>
           </li>
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/wa-categorias">
+            <Link className="wa-sidebar-link" to="/web-admin/categorias">
               <img className="wa-sidebar-icon" src={categories} alt="" />
               Categorías
             </Link>
           </li>
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/wa-pedidos">
+            <Link className="wa-sidebar-link" to="/web-admin/pedidos">
               <img className="wa-sidebar-icon" src={orders} alt="" />
               Pedidos
             </Link>
           </li>
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/wa-clientes">
+            <Link className="wa-sidebar-link" to="/web-admin/clientes">
               <img className="wa-sidebar-icon" src={clients} alt="" />
               Clientes
             </Link>
