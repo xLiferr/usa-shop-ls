@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useAuth } from "../../../hooks/useAuth";
 import "./style.css";
 // Components
 import { Footer } from "../../../components/Footer";
@@ -8,12 +9,16 @@ import { SidebarWA } from "../../../components/SidebarWA";
 // Icons
 import editIcon from "../../../images/edit.png";
 import deleteIcon from "../../../images/delete.png";
+// Utils
+import { successModal, errorModal } from "../../../utils/infoModals";
 
 export const WACategories = () => {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
-
+  const { user } = useAuth();
   const editHandler = (category) => {
+    console.log("edit")
+    /*
     Swal.fire({
       title: 'Modificar categoría',
       input: 'text',
@@ -62,10 +67,12 @@ export const WACategories = () => {
         })
       }
     })
-
+  */
   }
 
   const deleteHandler = (category) => {
+    console.log("delete")
+    /*
     Swal.fire({
       title: '¿Eliminar categoría?',
       text: 'Si eliminas la categoría, se eliminará de forma permanente de la tienda.',
@@ -106,39 +113,28 @@ export const WACategories = () => {
         })
       }
     })
+    */
   }
 
-  const addCategory = () => {
-    console.log(newCategory)
-    /*
-    axios.post("", { name: newCategory }).then((response) => {
-      if (response.status === 200) {
-        Swal.fire({
-          title: 'Categoría agregada!',
-          text: 'La categoría se ha agregado correctamente.',
-          icon: 'success',
-          confirmButtonText: 'Continuar',
-          confirmButtonColor: '#00AFB9',
-        })
-      } else if (response.status >= 400) {
-        Swal.fire({
-          title: 'Error inesperado!',
-          text: 'Hubo un error al intentar agregar la categoría, Inténtelo nuevamente.',
-          icon: 'error',
-          confirmButtonText: 'Continuar',
-          confirmButtonColor: '#00AFB9',
-        })
+  const addCategory = (event) => {
+    event.preventDefault();
+    console.log("a")
+    axios.post("http://localhost:3001/category/create", { access_token: user.access_token, name: newCategory }).then((response) => {
+      if (response.status === 201)  {
+        successModal('Categoría agregada!', 'La categoría se ha agregado correctamente.', true);
       }
+    }).catch((error) => {
+      errorModal('Error inesperado!', 'Hubo un error al intentar agregar la categoría, Inténtelo nuevamente.')
     })
-    */
   }
 
   useEffect(() => {
-    /*
-    axios.get('').then((response) => {
-      setCategories(response);
-    })
-    */
+    axios.get('http://localhost:3001/category/all').then((response) => {
+      if (response.status === 200) setCategories(response.data);
+    }).catch((error) => {
+      console.log(error)
+      setCategories([]);
+    }) 
   }, [])
   return (
     <>
@@ -148,11 +144,11 @@ export const WACategories = () => {
           <div className="wac-title"><h2>Categorías</h2></div>
         </div>
         <div className="wac-content">
-          <div className="wac-form">
+          <form className="wac-form" onSubmit={addCategory}>
             <h3>Agregar categoría</h3>
             <input type="text" required placeholder="Nombre categoría" onChange={(e) => setNewCategory(e.target.value)}/>
-            <button onClick={addCategory}>Agregar</button>
-          </div>
+            <button type="submit">Agregar</button>
+          </form>
           <div className="wac-table">
             {categories.length > 0 ? (
               <table>
