@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { successModal } from "../../utils/infoModals";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./style.css";
@@ -19,13 +20,6 @@ export const LoginModal = ({ closeModal }) => {
     await login({ email, password, role, access_token });
     setEmail("");
     setPassword("");
-    Swal.fire({
-      title: 'Sesión iniciada!',
-      text: 'Usted ha iniciado sesión correctamente.',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 2000
-    })
     closeModal(false);
   }
 
