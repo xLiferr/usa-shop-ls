@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import "./style.css";
 // Icons
 import logo from "../../images/logo.png";
@@ -12,11 +13,12 @@ import orders from "../../images/orders.png";
 import products from "../../images/products.png";
 import sales from "../../images/sales.png";
 import back from "../../images/back.png";
-// Components
+import logoutIcon from "../../images/log-out.png"
 
 
 export const SidebarWA = () => {
   const [waSidebar, setWaSidebar] = useState(false);
+  const { logout } = useAuth();
   return (
     <>
       <div className={!waSidebar ? ("wa-sidebar-open") : ("wa-sidebar-close")}>
@@ -69,6 +71,12 @@ export const SidebarWA = () => {
               <img className="wa-sidebar-icon" src={back} alt="" />
               Volver a la tienda
             </Link>
+          </li>
+          <li className="wa-sidebar-item">
+            <button className="wa-sidebar-link" onClick={async () => await logout()}>
+              <img className="wa-sidebar-icon" src={logoutIcon} alt="" />
+              Cerrar sesión
+            </button>
           </li>
         </ul>
       </div>

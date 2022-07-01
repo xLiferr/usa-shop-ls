@@ -17,8 +17,10 @@ export const AuthProvider = ({ children }) => {
   }
   const logout = async () => {
     await setUser(null);
-    if (location.pathname.includes('/web-admin')) navigate('/');
-    else window.location.reload();
+    if (location.pathname.includes('/web-admin')) {
+      navigate('/');
+    }
+    window.location.reload();
   }
   const value = useMemo(() => {
     return { user, login, logout }
