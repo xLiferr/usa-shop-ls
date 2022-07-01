@@ -1,6 +1,27 @@
-.home-content {
+.home-title {
   display: flex;
-  margin-block-end: 100px;
-  padding: 30px 0px 0px 0px;
-  height: auto;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 35px;
+  border-bottom: 5px solid var(--iris-blue);
+  border-radius: 10px;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px 20px 0px;
+}
+
+.home-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+.home-product {
+  margin: 10px 50px 10px 50px;
 }
