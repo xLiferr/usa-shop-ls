@@ -1,32 +1,32 @@
-.header-container {
-    max-width: 100vw;
+.header-top {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: auto;
 }
 
-.header-top {
-    max-width: 100vw;
+.header-info {
     display: flex;
-    height: 100px;
-    background-color: #fff;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    margin-top: 0px;
+    padding: 5px 20px 5px 20px;
 }
 
 .header-logo {
     max-height: 75px;
     width: 75px;
+    margin-right: 20px;
 }
 
-.header-USA{
+.header-USA {
     display: flex;
     text-decoration: none;
+    margin-right: 20px;
 }
 
-.header-USA h3{
+.header-USA h3 {
     font-size: 30px;
     color: var(--pink);
 }
@@ -35,12 +35,6 @@
 .header-info a {
     display: flex;
     text-decoration: none;
-}
-
-.bn-modal {
-    width: 24px;
-    margin-left: 15px;
-    margin-right: 10px;
 }
 
 .header-info a span {
@@ -53,66 +47,76 @@
 
 .header-envios {
     color: var(--pink);
+    text-align: center;
 }
 
-.search-logo{
+.search-logo {
     width: 10px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-.inputBuscar{
+.header-containerInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    padding: 5px 20px 5px 20px;
+}
+
+.inputBuscar {
     width: 100% !important;
 }
 
-.containerInput{
+@media (max-width: 988px) {
+
+    .inputBuscar {
+        width: 100% !important;
+    }
+
+    .App {
+        padding: 40px 5px;
+    }
+
+
+    .containerInput {
+        padding-bottom: 15px;
+    }
+
+}
+
+.header-buttons {
     display: flex;
-    justify-content: flex-end;
-    }
-
-@media (max-width: 988px){
-  
-    .inputBuscar{
-      width: 100% !important;
-    }
-  
-    .App{
-      padding: 40px 5px;
-    }
-  
-    
-  .containerInput{
-    padding-bottom: 15px;
-  }
-  
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+    padding: 5px 0px 5px 0px;
 }
 
-.openModal{
-display: flex;
-background-color: transparent;
-border: none;
-cursor: pointer;
-transition-duration: 250ms;
-align-items: center;
-}
-
-
-.bn-info h2{
-font-size: 25px;
-color: var(--pink);
-border: 0;
-}
-
-.header-carrito{
+.header-button {
     display: flex;
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition-duration: 250ms;
     align-items: center;
+    text-decoration: none;
 }
 
-.header-carritoIMG{
-    max-height: 30px;
-    width: 30px;
+.bn-modal {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.bn-info h3 {
+    font-size: 22px;
+    color: var(--pink);
+}
+
+
+
+.header-carritoIMG {
+    max-height: 40px;
+    width: 40px;
 }

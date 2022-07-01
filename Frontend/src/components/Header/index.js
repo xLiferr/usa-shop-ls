@@ -1,31 +1,73 @@
-import React from "react";
-import {useEffect, useState} from 'react';
+import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { useAuth } from "../../hooks/useAuth";
 import "./style.css";
+// Icons
 import logo from "../../images/logo.png";
 import carrito from "../../images/carrito.png";
-import user from '../../images/user.png'
+import userIcon from '../../images/clients.png'
+import logoutIcon from "../../images/log-out.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {LoginModal} from '../LoginModal';
+// Components
+import { LoginModal } from '../LoginModal';
 
-export const Header = () =>{
-
+export const Header = () => {
     const [busqueda, setBusqueda] = useState("");
-
-    const [openModal,setOpenModal] = useState(false);
-
-    const handleChange=e=>{
+    const [openModal, setOpenModal] = useState(false);
+    const { user, logout } = useAuth();
+    const handleChange = e => {
         setBusqueda(e.target.value);
-
     }
 
+    const hasUser = () => {
+        return (
+            <div className="header-buttons">
+                <Link className="header-button" to="/mi-cuenta">
+                    <img src={userIcon} alt="" className="bn-modal" />
+                    <div className="bn-info">
+                        <h3>Mi Cuenta</h3>
+                    </div>
+                </Link>
+                {openModal && <LoginModal closeModal={setOpenModal} />}
+                <Link className="header-button" to="/carrito">
+                    <img src={carrito} alt='' className="header-carritoIMG" />
+                </Link>
+                <button className="header-button" onClick={async () => await logout()}>
+                    <img src={logoutIcon} alt="Cerrar sesión" className="bn-modal" />
+                </button>
+            </div>
+        )
+    }
 
-    return(
-        <div className = "header-container">
-            <div className="header-top">
+    const hasNoUser = () => {
+        return (
+            <div className="header-buttons">
+                <button className="header-button"
+                    onClick={() => {
+                        setOpenModal(true);
+                    }}>
+                    <img src={userIcon} alt="" className="bn-modal" />
+                    <div className="bn-info">
+                        <h3>Hola!, Inicia sesión</h3>
+                    </div>
+                </button>
+            </div>
+        )
+    }
+
+    const showButtons = useMemo(() => {
+        if (user != null) return hasUser();
+        else return hasNoUser();
+    }, [user])
+
+    return (
+        <div className="header-top">
+            <div className="header-info">
                 <div className="header-logoUSA">
-                    <img src = {logo} alt='' className = "header-logo"/>
+                    <img src={logo} alt='' className="header-logo" />
                 </div>
                 <div className="header-USA">
                     <h3>USA SHOP</h3>
@@ -33,34 +75,20 @@ export const Header = () =>{
                 <div className="header-envios">
                     <span> Productos en Chile son procesados en 2 - 5 días habiles </span>
                 </div>
-                <div className="containerInput">
-                    <input
-                        className="form-control inputBuscar"
-                        value={busqueda}
-                        placeholder="Buscar producto"
-                        onChange={handleChange}
-                    />
-                    <button className="btn btn-success">
-                        <FontAwesomeIcon icon={faSearch}/>
-                    </button>
-                </div>
-                <button className="openModal"
-                    onClick={() => {
-                        setOpenModal(true);
-                    }}>
-                    <img src={user} alt="" className = "bn-modal"/>
-                    <div className="bn-info">
-                        <h2 >Iniciar sesión</h2>
-                    </div>
-                </button>
-                {openModal && <LoginModal closeModal={setOpenModal}/>}
-                <button className="header-carrito">
-                    <img src = {carrito} alt='' className = "header-carritoIMG"/>
-                    <div className="bn-info">
-                        <h2 >Carrito</h2>
-                    </div>
+            </div>
+            <div className="header-containerInput">
+                <input
+                    className="form-control inputBuscar"
+                    value={busqueda}
+                    placeholder="Buscar producto"
+                    onChange={handleChange}
+                />
+                <button className="btn btn-success">
+                    <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
-        </div>
+            {showButtons}
+            {openModal && <LoginModal closeModal={setOpenModal} />}
+        </div >
     );
 }
