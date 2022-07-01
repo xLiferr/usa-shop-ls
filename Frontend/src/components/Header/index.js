@@ -67,7 +67,7 @@ export const Header = () => {
         <div className="header-top">
             <div className="header-info">
                 <div className="header-logoUSA">
-                    <img src={logo} alt='' className="header-logo" />
+                    <Link to="/"><img src={logo} alt='' className="header-logo" /></Link>
                 </div>
                 <div className="header-USA">
                     <h3>USA SHOP</h3>

@@ -15,6 +15,7 @@ import { Carteras } from './pages/Carteras';
 import { Hombre } from './pages/Hombre';
 import { Mochilas } from './pages/Mochilas';
 import { Mujer } from './pages/Mujer';
+import { NotFound } from './pages/NotFound';
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
+            <Route path="*" element={<NotFound />}></Route>
             <Route path="/" element={<Home />}></Route>
             <Route path="/accesorios" element={<Accesorios />}></Route>
             <Route path="/carteras" element={<Carteras />}></Route>

@@ -6,9 +6,9 @@ export const ProtectedLayout = ({ allowedRoles }) => {
   const check = () => {
     try {
       if (user.access_token && user.email && allowedRoles.find((role) =>  user.role.includes(role))) return <Outlet />; 
-      else return <Navigate to="/" />;   
+      else return <Navigate to="/not-found" />;   
     } catch (error) {
-      return <Navigate to="/" />;
+      return <Navigate to="/not-found" />;
     }
   }
   return (check())
