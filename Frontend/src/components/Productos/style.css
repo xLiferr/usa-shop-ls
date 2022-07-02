@@ -1,4 +1,31 @@
-.productos {
+.productos{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttons-filter{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.btn-filtro{
+  margin-right: 20px;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-filtro:hover{
+  background-color:darkgrey;
+}
+
+
+.products-list {
   padding: 5rem 2rem;
   margin: 0 auto;
   display: grid;
