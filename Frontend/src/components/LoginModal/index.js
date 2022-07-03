@@ -17,10 +17,12 @@ export const LoginModal = ({ closeModal }) => {
   const { login } = useAuth();
 
   const confirmLogin = async (access_token, role) => {
+    await successModal('Sesión iniciada!', 'Usted ha iniciado sesión correctamente.', false, 3000);
     await login({ email, password, role, access_token });
     setEmail("");
     setPassword("");
     closeModal(false);
+    window.location.reload();
   }
 
   const denyLogin = () => {

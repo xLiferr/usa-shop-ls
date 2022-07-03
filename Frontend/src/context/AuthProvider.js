@@ -12,12 +12,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     await setUser(credentials);
-    await successModal('Sesión iniciada!', 'Usted ha iniciado sesión correctamente.', false, 3000);
-    window.location.reload();
   }
   const logout = async () => {
     await setUser(null);
-    if (location.pathname.includes('/web-admin')) {
+    if (location.pathname.includes('/web-admin') || location.pathname.includes('/mi-cuenta')) {
       navigate('/');
     }
     window.location.reload();
