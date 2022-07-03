@@ -35,13 +35,18 @@ export const Productos = () => {
     );
   }
 
+  const filterProduct = (cat) => {
+    const updateList = data.filter((x)=>x.category === cat);
+    setFilter(updateList);
+  }
+
   const ShowProducts = () => {
     return(
       <>
       <div className="buttons-filter">
-        <button className="btn-filtro">Polerones</button>
-        <button className="btn-filtro">Poleras</button>
-        <button className="btn-filtro">Ropa interior</button>
+        <button className="btn-filtro" onClick={() => filterProduct("men's clothing")}>Polerones</button>
+        <button className="btn-filtro" onClick={() => filterProduct("women's clothing")}>Poleras</button>
+        <button className="btn-filtro" onClick={() => filterProduct("jewelery")}>Ropa interior</button>
       </div>
       <div className="products-list">
       {filter.map((product)=>{
@@ -55,7 +60,7 @@ export const Productos = () => {
                 </a>
                 <div className="producto-footer">
                   <h1> {product.title} </h1>
-                  <p> Categoria </p>
+                  <p> {product.category} </p>
                   <p className="precio"> ${product.price} </p>
                 </div>
                 <div className="buttom">
