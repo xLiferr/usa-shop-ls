@@ -1,6 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
 import { ProtectedLayout } from './components/ProtectedLayout';
+// Shared routes
+import { Profile } from './pages/Profile';
+import { Addresses } from './pages/Profile/Addresses';
+import { Shopping } from './pages/Profile/Shopping';
+import { ChangePassword } from './pages/Profile/ChangePassword'
 // Web Admin routes
 import { WebAdmin } from './pages/WebAdmin';
 import { WAAddProduct } from './pages/WebAdmin/WAAddProduct';
@@ -32,7 +37,14 @@ function App() {
             <Route path="/hombre" element={<Hombre />}></Route>
             <Route path="/mochilas" element={<Mochilas />}></Route>
             <Route path="/mujer" element={<Mujer />}></Route>
-            <Route element={<ProtectedLayout allowedRoles={["Administrador"]}/>}>
+            <Route element={<ProtectedLayout allowedRoles={["Cliente", "Administrador"]} />}>
+              <Route path="/mi-cuenta" element={<Profile />}></Route>
+              <Route path="/mi-cuenta/direcciones" element={<Addresses />}></Route>
+              <Route path="/mi-cuenta/compras" element={<Shopping />}></Route>
+              <Route path="/mi-cuenta/contrasena" element={<ChangePassword />}></Route>
+              <Route path="/carrito" element={<Mujer />}></Route>
+            </Route>
+            <Route element={<ProtectedLayout allowedRoles={["Administrador"]} />}>
               <Route path="/web-admin" element={<WebAdmin />}></Route>
               <Route path="/web-admin/agregar-producto" element={<WAAddProduct />}></Route>
               <Route path="/web-admin/productos" element={<WAProducts />}></Route>
