@@ -82,7 +82,7 @@ export const Home = () => {
           <div className="home-title"><h2>Nuevos Productos</h2></div>
           <div className="home-products">
             {products.map((product, key) => {
-              return <div className="home-product"><ProductCard key={key} product={product} /></div>
+              return <div className="home-product" key={key}><ProductCard product={product} /></div>
             })}
           </div>
         </div>
