@@ -1,0 +1,36 @@
+.profile-menu {
+  padding: 20px;
+  width: 100%;
+}
+
+.profile-menu ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;  
+}
+
+.profile-menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  text-decoration: none;
+  width: 300px;
+  height: 40px;
+  background-color: transparent;
+  border: 3px solid var(--iris-blue);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+.profile-menu-item:hover, .profile-menu-item:focus {
+  background-color: var(--iris-blue);
+  border: none;
+  color: #fff;
+}
