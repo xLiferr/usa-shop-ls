@@ -1,0 +1,102 @@
+.changePass-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 0;
+}
+
+.changePass-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.changePass-section h3 {
+  color: var(--pink);
+  margin: 10px 0 10px 0;
+}
+
+.changePass-input input, .changePass-section button {
+  padding: 5px 15px 5px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 3px solid var(--iris-blue);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.changePass-section img {
+  width:;
+}
+
+.changePass-section button {
+  margin-top: 20px;
+}
+
+.changePass-input input:focus {
+  border: 3px solid var(--pink);
+  color: var(--pink);
+}
+
+.changePass-section button:hover {
+  background-color: var(--iris-blue);
+  color: #fff;
+}
+
+@media (min-width: 0px) {
+  .changePass-section p {
+    font-size: 12px;
+  }
+  .changePass-section img {
+    width: 25px;
+  }
+  
+  .changePass-input input, .changePass-section button ,.changePass-section h3 {
+    width: 300px;
+    font-size: 14px;
+  }
+  .changePass-input input {
+    width: 285px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) {
+  .changePass-input input, .changePass-section button,.changePass-section h3 {
+    width: 340px;
+    font-size: 16px;
+  }
+  .changePass-section img {
+    width: 30px;
+  }
+  .changePass-input input {
+    width: 315px;
+    font-size: 16px;
+  }
+  .changePass-section p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 720px) {
+  .changePass-input input, .changePass-section button,.changePass-section h3 {
+    width: 550px;
+    font-size: 22px;
+  }
+  .changePass-section img {
+    width: 30px;
+  }
+  .changePass-input input {
+    width: 525px;
+    font-size: 22px;
+  }
+  .changePass-section p {
+    font-size: 20px;
+  }
+}
