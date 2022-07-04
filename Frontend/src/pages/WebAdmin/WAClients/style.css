@@ -1,0 +1,134 @@
+.wa-clients-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+}
+
+.wa-clients-header h2 {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 50px;
+  font-size: 30px;
+  color: var(--iris-blue);
+  width: 400px;
+}
+
+.wa-clients-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.wa-clients-input {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+
+.wa-clients-input input {
+  width: 300px;
+  height: 40px;
+  background-color: none;
+  border: 3px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.wa-clients-input input:focus{
+  border: 3px solid var(--pink);
+}
+
+.wa-clients-input img {
+  width: 30px;
+}
+
+.wa-clients-content {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.wa-client-card {
+  width: 350px;
+  height: 350px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px -10px rgb(0, 0, 0, 0.5);
+}
+
+.wa-client-card-header {
+  background-color: var(--iris-blue);
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.wa-client-card-header h2 {
+  color: #fff;
+}
+
+.wa-client-card-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px
+}
+
+.wa-client-card-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 0px 0px;
+}
+
+.wa-client-card-item h3 {
+  color: var(--iris-blue);
+  font-size: 26px;
+}
+
+.wa-client-card-item h4 {
+  color: var(--pink);
+  font-size: 20px;
+}
+
+@media (min-width: 0px) {
+  .wa-clients-table {
+    width: 300px;
+  }
+  .wa-clients-table table th, td {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) {
+  .wa-clients-table {
+    width: 350px;
+  }
+  .wa-clients-table table th, td {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .wa-clients-table {
+    width: 900px;
+  }
+  .wa-clients-table table th, td {
+    font-size: 18px;
+  }
+}
