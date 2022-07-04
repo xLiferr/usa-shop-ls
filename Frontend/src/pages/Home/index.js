@@ -8,67 +8,12 @@ import { Categorys } from '../../components/Categorys'
 import { Carousel } from '../../components/Carousel'
 import { ProductCard } from "../../components/ProductCard";
 
-import icon from '../../images/delete.png';
-
 export const Home = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    setProducts([
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      },
-      {
-        id: 1,
-        name: "Mochila",
-        description: "Mochila para vos",
-        images: [icon],
-        price: 19990
-      }
-    ])
-    /*
     axios.get('http://localhost:3001/products/all').then((response) => {
       if (response.status === 200) setProducts(response.data);
     }).catch(() => setProducts([]))
-    */
   }, [])
     return (
       <>

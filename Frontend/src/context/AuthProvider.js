@@ -1,7 +1,6 @@
 import { createContext, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { successModal } from "../utils/infoModals";
 
 const AuthContext = createContext({});
 
@@ -15,9 +14,7 @@ export const AuthProvider = ({ children }) => {
   }
   const logout = async () => {
     await setUser(null);
-    if (location.pathname.includes('/web-admin') || location.pathname.includes('/mi-cuenta')) {
-      navigate('/');
-    }
+    if (location.pathname.includes('/web-admin') || location.pathname.includes('/mi-cuenta')) navigate('/', { replace: true });
     window.location.reload();
   }
   const value = useMemo(() => {
