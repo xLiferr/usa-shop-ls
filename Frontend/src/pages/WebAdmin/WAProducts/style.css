@@ -32,7 +32,7 @@
 
 .wap-input input {
   width: 300px;
-  height: 15px;
+  height: 40px;
   background-color: none;
   border: 3px solid var(--iris-blue);
   outline: none;
