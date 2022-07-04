@@ -8,6 +8,7 @@ import logo from "../../images/logo.png";
 import carrito from "../../images/carrito.png";
 import userIcon from '../../images/clients.png'
 import logoutIcon from "../../images/log-out.png";
+import webAdminBtn from "../../images/admin.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,6 +32,14 @@ export const Header = () => {
                         <h3>Mi Cuenta</h3>
                     </div>
                 </Link>
+                {user.role.includes("Administrador") ? (
+                    <Link className="header-button" to="/web-admin">
+                        <img src={webAdminBtn} alt="" className="bn-modal" />
+                        <div className="bn-info">
+                            <h3>Web admin</h3>
+                        </div>
+                    </Link>
+                ) : ("")}
                 {openModal && <LoginModal closeModal={setOpenModal} />}
                 <Link className="header-button" to="/carrito">
                     <img src={carrito} alt='' className="header-carritoIMG" />
