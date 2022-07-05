@@ -23,9 +23,9 @@ export const errorModal = (title, text) => {
   })
 }
 
-export const askModal = (title, text, cancelButton, confirmButton) => {
+export const askModal = async (title, text, cancelButton, confirmButton) => {
   let resp = false;
-  Swal.fire({
+  await Swal.fire({
     title: title,
     text: text,
     icon: 'warning',
@@ -36,6 +36,31 @@ export const askModal = (title, text, cancelButton, confirmButton) => {
     confirmButtonText: confirmButton
   }).then((result) => {
     if (result.isConfirmed) resp = true;
+  })
+  return resp;
+}
+
+export const inputModal = async (title, inputType, inputLabel, inputValue, confirmButtonText, validateMessage) => {
+  let resp = {
+    isConfirmed: false,
+    value: ""
+  }
+  await Swal.fire({
+    title: title,
+    input: inputType,
+    inputLabel: inputLabel,
+    inputValue: inputValue,
+    showCancelButton: true,
+    confirmButtonText: confirmButtonText,
+    confirmButtonColor: '#00AFB9',
+    inputValidator: (validator) => {
+      if(!validator) return validateMessage;
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      resp.isConfirmed = true;
+      resp.value = result.value;
+    }
   })
   return resp;
 }
