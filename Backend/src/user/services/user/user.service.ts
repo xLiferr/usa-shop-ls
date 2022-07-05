@@ -26,7 +26,6 @@ export class UserService {
     );
   }
 
-
   async create(body) {
     const newUser = new User();
     newUser.username = body.username;

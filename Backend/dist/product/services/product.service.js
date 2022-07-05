@@ -24,10 +24,14 @@ let ProductService = class ProductService {
         this.productsCategoryRepo = productsCategoryRepo;
     }
     getProducts() {
-        return this.productsRepo.find();
+        return this.productsRepo.find({
+            loadRelationIds: true,
+        });
     }
     async getProduct(id) {
-        return await this.productsRepo.findOne(id);
+        return await this.productsRepo.findOne(id, {
+            loadRelationIds: true,
+        });
     }
     async getProductByName(name) {
         return await this.productsRepo.findOne({
@@ -41,12 +45,31 @@ let ProductService = class ProductService {
         newProduct.price = body.price;
         newProduct.stock = body.stock;
         const searchCategory = await this.productsCategoryRepo.findOne({
-            where: { name: newProduct.category }
+            where: { id: newProduct.category }
         });
         if (!searchCategory) {
             throw new common_1.BadRequestException('La categoría del producto no existe');
         }
         return await this.productsRepo.save(newProduct);
+    }
+    async update(id, body) {
+        const product = await this.getProduct(id);
+        if (!product) {
+            throw new common_1.BadRequestException('El producto no existe en el sistema.');
+        }
+        if (body.category) {
+            const categoryToUpdate = await this.productsCategoryRepo.findOne({
+                where: { name: body.category }
+            });
+            if (!categoryToUpdate) {
+                throw new common_1.BadRequestException('No existe la categoría.');
+            }
+        }
+        this.productsRepo.merge(product, body);
+        return await this.productsRepo.save(product);
+    }
+    async delete(id) {
+        return await this.productsRepo.delete(id);
     }
 };
 ProductService = __decorate([

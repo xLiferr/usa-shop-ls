@@ -22,8 +22,17 @@ let CategoryController = class CategoryController {
     findAll() {
         return this.productService.getProductsCategories();
     }
+    findOne(id) {
+        return this.productService.getProductCategory(parseInt(id));
+    }
     createCategory(body) {
         return this.productService.create(body);
+    }
+    updateCategory(id, body) {
+        return this.productService.update(id, body);
+    }
+    deleteCategory(id) {
+        return this.productService.delete(id);
     }
 };
 __decorate([
@@ -33,12 +42,34 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CategoryController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CategoryController.prototype, "findOne", null);
+__decorate([
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], CategoryController.prototype, "createCategory", null);
+__decorate([
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], CategoryController.prototype, "updateCategory", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CategoryController.prototype, "deleteCategory", null);
 CategoryController = __decorate([
     (0, common_1.Controller)('category'),
     __metadata("design:paramtypes", [category_service_1.CategoryService])

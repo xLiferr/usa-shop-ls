@@ -19,7 +19,7 @@ __decorate([
     __metadata("design:type", Number)
 ], User_payment.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => user_entity_1.User),
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", user_entity_1.User)
 ], User_payment.prototype, "user", void 0);
@@ -33,7 +33,7 @@ __decorate([
 ], User_payment.prototype, "provider", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], User_payment.prototype, "account_no", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

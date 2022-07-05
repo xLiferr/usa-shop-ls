@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CategoryService } from 'src/category/services/category/category.service';
 
 @Controller('category')
@@ -10,10 +10,24 @@ export class CategoryController {
     return this.productService.getProductsCategories();
   }
 
+  @Get(':id')
+  public findOne(@Param('id') id: string) {
+    return this.productService.getProductCategory(parseInt(id));
+  }
+
   @Post('create')
-  createCategory(@Body() body) {
+  public createCategory(@Body() body) {
     return this.productService.create(body);
   }
 
+  @Put(':id')
+  public updateCategory(@Param('id') id: string, @Body() body) {
+    return this.productService.update(id, body);
+  }
+
+  @Delete(':id')
+  public deleteCategory(@Param('id') id: string) {
+    return this.productService.delete(id);
+  }
   
 }

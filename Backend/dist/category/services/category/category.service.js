@@ -35,7 +35,23 @@ let CategoryService = class CategoryService {
     async create(body) {
         const newCategory = new product_category_entity_1.Product_category();
         newCategory.name = body.name;
+        const searchCategory = await this.getProductCategoryByName(body.name);
+        console.log(searchCategory);
+        if (searchCategory) {
+            throw new common_1.BadRequestException('La categoría ya existe en el sistema.');
+        }
         return await this.categoriesRepo.save(newCategory);
+    }
+    async update(id, body) {
+        const category = await this.getProductCategory(id);
+        if (!category) {
+            throw new common_1.BadRequestException('La categoría no existe en el sistema.');
+        }
+        this.categoriesRepo.merge(category, body);
+        return await this.categoriesRepo.save(category);
+    }
+    async delete(id) {
+        return await this.categoriesRepo.delete(id);
     }
 };
 CategoryService = __decorate([

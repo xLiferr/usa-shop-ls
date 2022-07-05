@@ -4,6 +4,6 @@ export declare class User_payment {
     user: User;
     payment_type: string;
     provider: string;
-    account_no: number;
+    account_no: string;
     expiry: Date;
 }

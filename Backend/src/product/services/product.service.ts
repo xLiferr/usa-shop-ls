@@ -4,6 +4,7 @@ import { Product } from 'src/entities/product.entity';
 import { Repository } from 'typeorm';
 import { Product_category } from 'src/entities/product_category.entity'
 
+
 @Injectable()
 export class ProductService {
   constructor(
@@ -12,11 +13,20 @@ export class ProductService {
   ) {}
 
   getProducts() {
-    return this.productsRepo.find();
+    return this.productsRepo.find(
+      {
+        /**relations: ['category'],**/
+        loadRelationIds: true,
+      }
+    );
   }
 
   public async getProduct(id: number) {
-    return await this.productsRepo.findOne(id);
+    return await this.productsRepo.findOne(id,
+      {
+        loadRelationIds: true,
+      }
+    );
   }
 
   public async getProductByName(name: string) {
@@ -38,7 +48,7 @@ export class ProductService {
     const searchCategory = await this.productsCategoryRepo.findOne(
       {
         where: 
-        { name: newProduct.category }
+        { id: newProduct.category }
       }
     );
     
@@ -47,6 +57,30 @@ export class ProductService {
     }
 
     return await this.productsRepo.save(newProduct);
+  }
+
+  async update(id, body) {
+    const product = await this.getProduct(id);
+    if (!product) {
+      throw new BadRequestException('El producto no existe en el sistema.');
+    }
+    if (body.category) {
+      const categoryToUpdate = await this.productsCategoryRepo.findOne(
+        {
+          where: 
+          { name: body.category }
+        }
+      );
+      if (!categoryToUpdate) {
+        throw new BadRequestException('No existe la categoría.');
+      }
+    }
+    this.productsRepo.merge(product, body);
+    return await this.productsRepo.save(product);
+  }
+
+  async delete(id) {
+    return await this.productsRepo.delete(id);
   }
 
 }

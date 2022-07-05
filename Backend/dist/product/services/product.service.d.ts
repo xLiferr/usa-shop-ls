@@ -9,4 +9,6 @@ export declare class ProductService {
     getProduct(id: number): Promise<Product>;
     getProductByName(name: string): Promise<Product>;
     create(body: any): Promise<Product>;
+    update(id: any, body: any): Promise<Product>;
+    delete(id: any): Promise<import("typeorm").DeleteResult>;
 }

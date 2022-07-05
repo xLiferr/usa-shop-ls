@@ -7,4 +7,6 @@ export declare class CategoryService {
     getProductCategory(id: number): Promise<Product_category>;
     getProductCategoryByName(name: string): Promise<Product_category>;
     create(body: any): Promise<Product_category>;
+    update(id: any, body: any): Promise<Product_category>;
+    delete(id: any): Promise<import("typeorm").DeleteResult>;
 }
