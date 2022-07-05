@@ -13,7 +13,7 @@ export const WAAddProduct = () => {
         <div className="wa-ap-header">
           <h2>Agregar un producto</h2>
         </div>
-        <ProductForm />
+        <ProductForm type={"create"}/>
       </div>
       <Footer />
     </>

@@ -8,11 +8,27 @@ import add from "../../images/add.png";
 import deleteIcon from "../../images/delete.png";
 import "./style.css";
 
-export const ProductForm = ({ product = {} }) => {
+export const ProductForm = ({ product = {}, type }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const { user } = useAuth();
-  const submitProduct = (event) => {
+  const handleEdit = (event) => {
+    event.preventDefault();
+    let formDataImages = new FormData();
+    selectedImages?.forEach((image) => {
+      formDataImages.append("images", image)
+    })
+    axios.put(`http://localhost:3001/products/${product.id}`, {
+      access_token: user.access_token,
+      name: product.name,
+      category: parseInt(product.category),
+      stock: parseInt(product.stock),
+      price: parseInt(product.price)
+    }).then((response) => {
+      if (response.status === 201) successModal('Producto modificado!', 'El producto se ha modificado correctamente.', true);
+    }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar modificar el producto, Inténtelo nuevamente.') });
+  }
+  const handleCreate = (event) => {
     event.preventDefault();
     let formDataImages = new FormData();
     selectedImages?.forEach((image) => {
@@ -25,8 +41,8 @@ export const ProductForm = ({ product = {} }) => {
       stock: parseInt(product.stock),
       price: parseInt(product.price)
     }).then((response) => {
-      if (response.status === 200) successModal('Producto modificado!', 'El producto se ha modificado correctamente.', true);
-    }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.') });
+      if (response.status === 201) successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
+    }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.') });
   }
   const imageHandler = (event) => {
     if (selectedImages) setSelectedImages((previusImages) => previusImages.concat(Array.from(event.target.files)));
@@ -42,7 +58,7 @@ export const ProductForm = ({ product = {} }) => {
   return (
     categories.length > 0 ? (
       <div className="prodForm-content">
-        <form className="prodForm-form" onSubmit={submitProduct}>
+        <form className="prodForm-form" onSubmit={type === "create"? (handleCreate) : (handleEdit)}>
           <div>
             <div className="prodForm-form-item">
               <h4>Nombre</h4>
@@ -57,7 +73,7 @@ export const ProductForm = ({ product = {} }) => {
               <select defaultValue={product.category} required onChange={(e) => product.category = e.target.value}>
                 <option value="">Elegir categoría</option>
                 {categories.map((category, key) => {
-                  return <option value={category.id}>{category.name}</option>
+                  return <option key={key} value={category.id}>{category.name}</option>
                 })}
               </select>
             </div>
