@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { successModal, askModal, errorModal } from "../../../utils/infoModals";
 import Swal from "sweetalert2";
 import "./style.css";
 // Components
@@ -16,7 +17,9 @@ import back from "../../../images/back.png";
 
 export const WAProducts = () => {
   const [searchedProduct, setSearchedProduct] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(-1);
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState({});
 
@@ -25,51 +28,16 @@ export const WAProducts = () => {
     setIsEditing(true);
   }
 
-  const deleteHandler = (product) => {
-    Swal.fire({
-      title: '¿Eliminar producto?',
-      text: 'Si eliminas el producto, se eliminará de forma permanente de la tienda.',
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonColor: '#B1B1B1',
-      cancelButtonText: 'No, mantener producto',
-      confirmButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminar producto'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios.delete('').then((response) => {
-          if (response.status === 200) {
-            Swal.fire({
-              title: 'Producto eliminado!',
-              text: 'El producto se ha eliminado correctamente.',
-              icon: 'success',
-              confirmButtonText: 'Continuar',
-              confirmButtonColor: '#00AFB9',
-            })
-          } else if (response.status >= 400) {
-            Swal.fire({
-              title: 'Error inesperado!',
-              text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
-              icon: 'error',
-              confirmButtonText: 'Continuar',
-              confirmButtonColor: '#00AFB9',
-            })
-          }
-        }).catch((error) => {
-          Swal.fire({
-            title: 'Error inesperado!',
-            text: 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.',
-            icon: 'error',
-            confirmButtonText: 'Continuar',
-            confirmButtonColor: '#00AFB9',
-          })
-        })
-      }
-    })
+  const deleteHandler = async (product) => {
+    if (await askModal('¿Eliminar producto?', 'Si eliminas el producto, se eliminará de forma permanente de la tienda.','No, mantener producto', 'Sí, eliminar producto')) {
+      axios.delete(`http://localhost:3001/products/${product.id}`).then((response) => {
+        if (response.status === 200) successModal('Producto eliminado!', 'El producto se ha eliminado correctamente.', true);
+      }).catch(() => errorModal('Error inesperado!', 'Hubo un error al intentar eliminar el producto, Inténtelo nuevamente.'));
+    }
   }
   const filterProducts = useMemo(() => {
     return products.filter((product) => {
-      if (searchedProduct === "") return true;
+      if (searchedProduct === "" && selectedCategory === -1) return true;
       if (product.name.toLowerCase().includes(searchedProduct.toLowerCase())) return true;
       return false;
     })
@@ -80,7 +48,7 @@ export const WAProducts = () => {
       return filterProducts.map((product, key) => {
         return (
           <div className="wap-product" key={key}>
-            <div className="wap-product-image"><img src={product.images[0]} alt="" /></div>
+            <div className="wap-product-image"></div>
             <div className="wap-product-name"><h3>{product.name}</h3></div>
             <div className="wap-product-price"><h4>${product.price}</h4></div>
             <div className="wap-product-buttons">
@@ -101,9 +69,12 @@ export const WAProducts = () => {
         </div>
       )
     }
-  }, [filterProducts, products.length])
+  }, [filterProducts])
 
   useEffect(() => {
+    axios.get("http://localhost:3001/category/all").then((response) => {
+      if (response.status === 200) setCategories(response.data);
+    }).catch((error) => setCategories([]));
     axios.get("http://localhost:3001/products/all")
       .then((response) => {
         if (response.status === 200) setProducts(response.data);
@@ -124,8 +95,11 @@ export const WAProducts = () => {
             </div>
             <div className="wap-filters">
               <label>Categoría</label>
-              <select>
-                <option>Categoría</option>
+              <select defaultValue="Elegir categoría" required onChange={(e) =>  setSelectedCategory(e.target.value)}>
+                <option value="">Elegir categoría</option>
+                {categories.map((category, key) => {
+                  return <option key={key} value={category.id}>{category.name}</option>
+                })}
               </select>
             </div>
           </div>
@@ -139,7 +113,7 @@ export const WAProducts = () => {
             <div className="wap-edit-header">
               <h3>Modificar producto</h3>
             </div>
-            <ProductForm product={selectedProduct}/>
+            <ProductForm product={selectedProduct} type="edit"/>
           </div>
         ) : (<div className="wap-content">{showProducts}</div>)}
       </div>
