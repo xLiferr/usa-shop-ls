@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { successModal, errorModal } from "../../utils/infoModals";
 import "./style.css";
 import logo from "../../images/logo.png";
 import close from "../../images/close.png";
 
-export const RegisterModal = ({ closeModal }) => {
+export const RegisterModal = ({ setOpenRegister }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
@@ -15,23 +15,12 @@ export const RegisterModal = ({ closeModal }) => {
     const [telephone, setTelephone] = useState("");
 
     const confirmRegister = () => {
-        Swal.fire({
-            title: 'Registro exitoso!',
-            text: 'Usted se ha registrado correctamente en USA SHOP.',
-            icon: 'success',
-            confirmButtonText: 'Continuar',
-            confirmButtonColor: '#00AFB9',
-        })
+        successModal('Registro exitoso!', 'Usted se ha registrado correctamente en USA SHOP.', false, 0);
+        setOpenRegister(false);
     }
 
     const denyRegister = (message) => {
-        Swal.fire({
-            title: 'Error al registrar',
-            text: message,
-            icon: 'error',
-            confirmButtonText: 'Continuar',
-            confirmButtonColor: '#00AFB9',
-        })
+        errorModal('Error al registrar', message, false, 0);
     }
 
     const handleRegister = async (e) => {
@@ -54,7 +43,7 @@ export const RegisterModal = ({ closeModal }) => {
         <div className="rm-bg">
             <div className="rm-border">
                 <div className="rm-content">
-                    <button className="rm-close" onClick={() => closeModal(false)} >
+                    <button className="rm-close" onClick={() => setOpenRegister(false)} >
                         <img src={close} alt="" />
                     </button>
                     <div className="rm-header">

@@ -11,7 +11,7 @@ import { ProductCard } from "../../components/ProductCard";
 export const Home = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3001/products/all').then((response) => {
+    axios.get(`http://localhost:3001/products/all`).then((response) => {
       if (response.status === 200) setProducts(response.data);
     }).catch(() => setProducts([]))
   }, [])

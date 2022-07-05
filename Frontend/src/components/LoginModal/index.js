@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { successModal } from "../../utils/infoModals";
+import { successModal, errorModal } from "../../utils/infoModals";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./style.css";
-// Components
-import { RegisterModal } from '../RegisterModal';
 // Icons
 import logo from "../../images/logo.png";
 import close from "../../images/close.png";
 
-export const LoginModal = ({ closeModal }) => {
-  const [openModal, setOpenModal] = useState(false);
+export const LoginModal = ({ setOpenLogin, setOpenRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
@@ -21,18 +18,12 @@ export const LoginModal = ({ closeModal }) => {
     await login({ email, password, role, access_token });
     setEmail("");
     setPassword("");
-    closeModal(false);
+    setOpenLogin(false);
     window.location.reload();
   }
 
   const denyLogin = () => {
-    Swal.fire({
-      title: 'Sesión no iniciada',
-      text: 'Su correo electrónico y/o contraseña no coinciden.',
-      icon: 'error',
-      confirmButtonText: 'Continuar',
-      confirmButtonColor: '#00AFB9',
-    })
+    errorModal('Sesión no iniciada', 'Su correo electrónico y/o contraseña no coinciden.', false, 0);
   }
 
   const handleLogin = async (e) => {
@@ -51,7 +42,7 @@ export const LoginModal = ({ closeModal }) => {
     <div className="lm-bg">
       <div className="lm-border">
         <div className="lm-content">
-          <button className="lm-close" onClick={() => closeModal(false)} >
+          <button className="lm-close" onClick={() => setOpenLogin(false)} >
             <img src={close} alt="" />
           </button>
           <div className="lm-header">
@@ -73,11 +64,11 @@ export const LoginModal = ({ closeModal }) => {
                 <button>¿Olvidaste tu contraseña?</button>
                 <button className="openModal"
                   onClick={() => {
-                    setOpenModal(true);
+                    setOpenRegister(true);
+                    setOpenLogin(false);
                   }}>
                   Registrarse
                 </button>
-                {openModal && <RegisterModal closeModal={setOpenModal} />}
               </div>
             </div>
           </form>

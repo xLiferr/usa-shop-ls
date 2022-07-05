@@ -1,116 +1,120 @@
 .rm-bg {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .rm-bg .rm-border {
-    width: 450px;
-    min-height: 100px;
-    background: var(--iris-blue);
-    position: relative;
-    padding: 5px;
-  }
-  
-  .rm-bg .rm-border .rm-content {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    max-width: 450px;
-    min-height: 300px;
-    padding: 20px 30px 20px 30px;
-  }
-  
-  .rm-close {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -15px;
-    margin-right: -25px;
-  }
-  
-  .rm-close img{
-    width: 25px;
-    height: 25px;
-  }
-  
-  .rm-content .rm-header {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .rm-header .rm-header-title { 
-    color: var(--pink);
-    font-size: 26px;
-  }
-  
-  .rm-form {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .rm-input {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .rm-input input {
-    color: var(--iris-blue);
-    font-size: 20px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 350px;
-    border: none;
-    border-bottom: 2px solid var(--pink);
-  }
-  
-  .rm-input input:focus { 
-    outline:none; 
-    border-bottom: 2px solid var(--iris-blue);
-  }
-  
-  .rm-input label {
-    color: var(--pink); 
-    font-size: 20px;
-    position:absolute;
-    pointer-events: none;
-    left:5px;
-    top: 5px;
-    transition:0.2s ease all; 
-  }
-  
-  .rm-input input:focus ~ label, .rm-input input:valid ~ label {
-    top: -15px;
-    font-size: 16px;
-    color: var(--iris-blue);
-  }
-  
-  .rm-button {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  
-  .rm-button button { 
-    font-size: 20px;
-    color: var(--pink);
-    border-radius: 15px;
-    width: 200px;
-    border: 2px solid var(--pink);
-    transition: 0.2s ease all;
-    background-color: transparent;
-  }
-  
-  .rm-button button:hover {
-    color: #fff;
-    background-color: var(--iris-blue);
-    border: 2px solid var(--iris-blue);
-  }
-  
-  
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.rm-bg .rm-border {
+  width: 450px;
+  min-height: 100px;
+  background: var(--iris-blue);
+  position: relative;
+  padding: 5px;
+}
+
+.rm-bg .rm-border .rm-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  max-width: 450px;
+  min-height: 300px;
+  padding: 20px 30px 20px 30px;
+}
+
+.rm-close {
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition-duration: 250ms;
+  align-items: flex-end;
+  margin-top: -15px;
+  margin-right: -25px;
+}
+
+.rm-close img {
+  width: 25px;
+  height: 25px;
+}
+
+.rm-content .rm-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rm-header .rm-header-title {
+  color: var(--pink);
+  font-size: 26px;
+}
+
+.rm-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rm-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.rm-input input {
+  color: var(--iris-blue);
+  font-size: 20px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 350px;
+  border: none;
+  border-bottom: 2px solid var(--pink);
+}
+
+.rm-input input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--iris-blue);
+}
+
+.rm-input label {
+  color: var(--pink);
+  font-size: 20px;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 5px;
+  transition: 0.2s ease all;
+}
+
+.rm-input input:focus~label,
+.rm-input input:valid~label {
+  top: -15px;
+  font-size: 16px;
+  color: var(--iris-blue);
+}
+
+.rm-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.rm-button button {
+  font-size: 20px;
+  color: var(--pink);
+  border-radius: 15px;
+  width: 200px;
+  border: 2px solid var(--pink);
+  transition: 0.2s ease all;
+  background-color: transparent;
+}
+
+.rm-button button:hover {
+  color: #fff;
+  background-color: var(--iris-blue);
+  border: 2px solid var(--iris-blue);
+}

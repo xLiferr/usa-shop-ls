@@ -14,10 +14,12 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
 // Components
 import { LoginModal } from '../LoginModal';
+import { RegisterModal } from '../RegisterModal';
 
 export const Header = () => {
     const [busqueda, setBusqueda] = useState("");
-    const [openModal, setOpenModal] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
+    const [openRegister, setOpenRegister] = useState(false);
     const { user, logout } = useAuth();
     const handleChange = e => {
         setBusqueda(e.target.value);
@@ -40,7 +42,6 @@ export const Header = () => {
                         </div>
                     </Link>
                 ) : ("")}
-                {openModal && <LoginModal closeModal={setOpenModal} />}
                 <Link className="header-button" to="/carrito">
                     <img src={carrito} alt='' className="header-carritoIMG" />
                 </Link>
@@ -56,7 +57,7 @@ export const Header = () => {
             <div className="header-buttons">
                 <button className="header-button"
                     onClick={() => {
-                        setOpenModal(true);
+                        setOpenLogin(true);
                     }}>
                     <img src={userIcon} alt="" className="bn-modal" />
                     <div className="bn-info">
@@ -97,7 +98,8 @@ export const Header = () => {
                 </button>
             </div>
             {showButtons}
-            {openModal && <LoginModal closeModal={setOpenModal} />}
+            {openLogin && <LoginModal setOpenLogin={setOpenLogin} setOpenRegister={setOpenRegister} />}
+            {openRegister && <RegisterModal setOpenRegister={setOpenRegister} />}
         </div >
     );
 }
