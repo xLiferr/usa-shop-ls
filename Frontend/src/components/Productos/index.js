@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { NavLink } from 'react-router-dom';
 
 export const Products = (generoFiltro) => {
 
@@ -77,9 +78,9 @@ export const Products = (generoFiltro) => {
                 <div className="buttom">
                   <button className="btn">Añadir al carrito</button>
                 <div>
-                <a href="#" className="btn">
+                <NavLink to = {`/products/${product.id}`} className="btn">
                   Ver producto
-                </a>
+                </NavLink>
               </div>
             </div>
         </div>

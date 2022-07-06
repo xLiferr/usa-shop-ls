@@ -30,7 +30,7 @@ let ProductService = class ProductService {
     }
     async getProduct(id) {
         return await this.productsRepo.findOne(id, {
-            loadRelationIds: true,
+            relations: ['category'],
         });
     }
     async getProductByName(name) {

@@ -22,6 +22,7 @@ import { Hombre } from './pages/Hombre';
 import { Mochilas } from './pages/Mochilas';
 import { Mujer } from './pages/Mujer';
 import { NotFound } from './pages/NotFound';
+import { Product } from './pages/Product'
 
 import "./App.css";
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/hombre" element={<Hombre />}></Route>
             <Route path="/mochilas" element={<Mochilas />}></Route>
             <Route path="/mujer" element={<Mujer />}></Route>
+            <Route path="/products/:id" element={<Product />}></Route>
             <Route element={<ProtectedLayout allowedRoles={["Cliente", "Administrador"]} />}>
               <Route path="/mi-cuenta" element={<Profile />}></Route>
               <Route path="/mi-cuenta/direcciones" element={<Addresses />}></Route>

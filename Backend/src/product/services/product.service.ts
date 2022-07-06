@@ -24,7 +24,8 @@ export class ProductService {
   public async getProduct(id: number) {
     return await this.productsRepo.findOne(id,
       {
-        loadRelationIds: true,
+        relations: ['category'],
+        /**loadRelationIds: true,**/
       }
     );
   }
