@@ -15,8 +15,8 @@ export class ProductService {
   getProducts() {
     return this.productsRepo.find(
       {
-        /**relations: ['category'],**/
-        loadRelationIds: true,
+        relations: ['category'],
+        /**loadRelationIds: true,**/
       }
     );
   }

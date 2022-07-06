@@ -18,4 +18,7 @@ export class Product {
 
   @Column()
   price: number
+
+  @Column( { nullable:true } )
+  gender: string
 }

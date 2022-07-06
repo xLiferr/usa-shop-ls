@@ -5,4 +5,5 @@ export declare class Product {
     category: Product_category;
     stock: number;
     price: number;
+    gender: string;
 }

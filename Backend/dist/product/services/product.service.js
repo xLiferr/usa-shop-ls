@@ -25,7 +25,7 @@ let ProductService = class ProductService {
     }
     getProducts() {
         return this.productsRepo.find({
-            loadRelationIds: true,
+            relations: ['category'],
         });
     }
     async getProduct(id) {
