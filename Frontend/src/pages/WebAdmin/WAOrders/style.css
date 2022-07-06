@@ -1,0 +1,87 @@
+.wa-orders-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  flex-wrap: wrap;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+}
+
+.wa-orders-header h2 {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 50px;
+  font-size: 30px;
+  color: var(--iris-blue);
+  width: 400px;
+}
+
+.wa-orders-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.wa-orders-input {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+
+.wa-orders-input input {
+  width: 300px;
+  height: 40px;
+  background-color: none;
+  border: 3px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.wa-orders-input input:focus{
+  border: 3px solid var(--pink);
+}
+
+.wa-orders-input img {
+  width: 30px;
+}
+
+.wa-orders-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.wa-orders-content table {
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;  
+  background-color: transparent;
+}
+
+.wa-orders-content table thead {
+  background-color: var(--iris-blue);
+  color: #fff;
+  top: 0;
+}
+
+.wa-orders-content table th, td {
+  border: 1px solid #dddddd;
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.wa-orders-content tr:hover td {
+  color: var(--pink);
+  cursor: pointer;
+  background-color: #f0706725;
+}
