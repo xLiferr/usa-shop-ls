@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { successModal, askModal, errorModal } from "../../../utils/infoModals";
-import Swal from "sweetalert2";
 import "./style.css";
 // Components
 import { Footer } from "../../../components/Footer";
