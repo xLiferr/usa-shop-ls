@@ -14,7 +14,7 @@ export const Addresses = () => {
   const { user } = useAuth();
   const [userAddresses, setUserAddresses] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/address/all`).then((response) => {
+    axios.get(`http://localhost:3001/address/user/${user.id}`).then((response) => {
       if (response.status === 200) setUserAddresses(response.data);
     }).catch(() => setUserAddresses([]))
   }, [])
@@ -26,12 +26,14 @@ export const Addresses = () => {
       <div className="addresses-content">
         <div className="addresses-header">
           <div className="addresses-title"><h2>Direcciones</h2></div>
-          <div className="addresses-button">
-            <Link className="addresses-create-btn" to="/mi-cuenta/direcciones/crear">
-              <img src={addIcon} alt="" />
-              Agregar dirección
-            </Link>
-          </div>
+          {userAddresses.length > 0 ? (
+            <div className="addresses-button">
+              <Link className="addresses-create-btn" to="/mi-cuenta/direcciones/crear">
+                <img src={addIcon} alt="" />
+                Agregar dirección
+              </Link>
+            </div>
+          ) : ("")}
         </div>
         {userAddresses.length > 0 ? (
           <div className="addresses-cards">
