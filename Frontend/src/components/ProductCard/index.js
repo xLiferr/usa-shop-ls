@@ -6,7 +6,7 @@ export const ProductCard = ({product}) => {
   return (
     <Link className="prodCard-bg" to="/">
       <div className="prodCard-section">
-        <img src={product.images[0]} alt="" />
+        <img src='' alt="" />
       </div>
       <div className="prodCard-section">
         <h3>{product.name}</h3>

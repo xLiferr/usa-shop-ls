@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-export const Products = (generoFiltro) => {
+export const ProductsSF = (catID) => {
 
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(-1);
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
-  const genero = generoFiltro;
+  const categoria = catID;
   const filtro = data.filter((x)=>{
-    if(filter !== -1){
-      return x.gender === genero.generoFiltro && x.category.id === filter;
-    }
-    return x.gender === genero.generoFiltro
+    return x.category.id === categoria.catID
   });
+
+  const cant = filtro.length;
 
   useEffect(() => {
     const getProducts = async() => {
@@ -22,7 +21,6 @@ export const Products = (generoFiltro) => {
       if(componentMounted){
           setData(await response.clone().json());
           setLoading(false);
-          
       }
       console.log(data);
       return () =>{
@@ -41,25 +39,13 @@ export const Products = (generoFiltro) => {
     );
   }
 
-  const filterProduct = (cat) => {
-    setFilter(cat);
-  }
-
-  
-
 
   const ShowProducts = () => {  
     return(
       <>
-      <div className="buttons-filter">
-        <button className="btn-filtro" onClick={() => filterProduct(-1)}>Todo</button>
-        <button className="btn-filtro" onClick={() => filterProduct(1)}>Poleras</button>
-        <button className="btn-filtro" onClick={() => filterProduct(5)}>Polerones</button>
-        <button className="btn-filtro" onClick={() => filterProduct(7)}>Ropa interior</button>
-        <button className="btn-filtro" onClick={() => filterProduct(6)}>Pantalones</button>
-      </div>
       <div className="products-list">
       {filtro.map((product,i)=>{
+        console.log(cant);
         return(
           <>
               <div className="producto" key={i}>
@@ -91,6 +77,14 @@ export const Products = (generoFiltro) => {
       </>
     );
   }
+    console.log(cant)
+    if(cant === 0){
+      return(
+        <div className="sin-productos">
+          <h1> NO HAY PRODUCTOS </h1>
+        </div>
+      )
+    }
 
   return (
     <div className="productos">

@@ -3,15 +3,14 @@ import "./style.css";
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Categorys } from '../../components/Categorys'
+import { ProductsSF } from '../../components/ProductsSF'
 
 export const Mochilas = () => {
     return(
         <div className="Mochilas">
             <Header/>
             <Categorys/>
-            <div className="moc-content">
-
-            </div>
+            <ProductsSF catID={8}/>
             <Footer/>
         </div>
     )

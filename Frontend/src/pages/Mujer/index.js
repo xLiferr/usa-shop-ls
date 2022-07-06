@@ -3,15 +3,14 @@ import "./style.css";
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Categorys } from '../../components/Categorys'
+import { Products } from '../../components/Productos'
 
 export const Mujer = () => {
     return(
         <div className="Mujer">
             <Header/>
             <Categorys/>
-            <div className="muj-content">
-
-            </div>
+            <Products generoFiltro={'Mujer'}/>
             <Footer/>
         </div>
     )
