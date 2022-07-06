@@ -1,0 +1,112 @@
+.addresses-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.addresses-button {
+  margin: 15px;
+}
+
+.addresses-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--pink);  
+}
+
+.addresses-create-btn {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-around;
+  border: 3px solid #f07067a6;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--iris-blue);
+  transition: 0.3 ease-in-out;
+}
+
+.addresses-create-btn:hover {
+  background-color: #f07067a6;
+  color: #fff;
+}
+
+.addresses-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.addresses-items {
+  width: fit-content;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px -8px rgb(0, 0, 0, 0.5);
+}
+
+.addresses-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.addresses-item h3 {
+  color: var(--pink);
+  margin: 10px 0 10px 0;
+}
+
+.addresses-item input {
+  padding: 5px 15px 5px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 3px solid var(--iris-blue);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.addresses-item button {
+  margin-top: 20px;
+}
+
+.addresses-item input:focus, .addresses-item select:focus {
+  border: 3px solid var(--pink);
+  color: var(--pink);
+}
+
+.addresses-item button:hover {
+  background-color: var(--iris-blue);
+  color: #fff;
+}
+
+@media (min-width: 0px) {  
+  .addresses-item input, .addresses-item select, .addresses-item button ,.addresses-item h3 {
+    width: 300px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) {
+  .addresses-item input, .addresses-item select, .addresses-item button,.addresses-item h3 {
+    width: 340px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .addresses-item input, .addresses-item select, .addresses-item button,.addresses-item h3 {
+    width: 600px;
+    font-size: 20px;
+  }
+}
