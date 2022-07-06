@@ -1,0 +1,67 @@
+.addresses-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 0;
+}
+
+.addresses-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.addresses-section h3 {
+  color: var(--pink);
+  margin: 10px 0 10px 0;
+}
+
+.addresses-input input, .addresses-section select, .addresses-section button {
+  padding: 5px 15px 5px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 3px solid var(--iris-blue);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.addresses-section button {
+  margin-top: 20px;
+}
+
+.addresses-input input:focus, .addresses-section select:focus {
+  border: 3px solid var(--pink);
+  color: var(--pink);
+}
+
+.addresses-section button:hover {
+  background-color: var(--iris-blue);
+  color: #fff;
+}
+
+@media (min-width: 0px) {  
+  .addresses-input input, .addresses-section select, .addresses-section button ,.addresses-section h3 {
+    width: 300px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) {
+  .addresses-input input, .addresses-section select, .addresses-section button,.addresses-section h3 {
+    width: 340px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .addresses-input input, .addresses-section select, .addresses-section button,.addresses-section h3 {
+    width: 550px;
+    font-size: 22px;
+  }
+}
