@@ -87,47 +87,54 @@
   color: #1a202c;
 }
 
-.buttom {
-    width: 100%;
-    height: 45px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1rem 2rem;
+.buttom-add {
+  width: 100%;
+  height: 45px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem 2rem;
 }
 
-.buttom .btn{
-    border: none;
-    outline: 0;
-    cursor: pointer;
-    border-radius: 5px;
+.buttom-add .btn-a{
+outline: 0;
+cursor: pointer;
+border: 3px solid var(--iris-blue);
+border-radius: 15px;
+background-color: white;
+max-width: 250px;
+width: 100%;
+margin: 0 auto;
+font-size: 25px;
+color: var(--iris-blue);
 }
 
-.buttom button{
-    background-color: #3033d3;
-    max-width: 250px;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 1.5rem;
-    color: white;
-    font-weight: 600;
+
+.buttom-add div{
+outline: 0;
+  background-color:white;
+  border-radius: 15px;
+  border: 3px solid var(--iris-blue);
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  margin-left: -2rem;
 }
 
-.buttom div{
-    background-color: #08a05c;
-    display: grid;
-    align-items: center;
-    text-align: center;
-    margin-left: -2rem;
-    border-radius: 5px;
+.btn-v{
+outline: 0;
+text-decoration: none;
+color: var(--iris-blue);
+font-size: 20px;
+max-width: 250px;
+width: 100%;
 }
 
-.buttom div .btn{
-    color: white;
-    font-weight: 700;
-}
 
-.buttom div a:hover{
-    color: white;
+.btn-a:hover{
+background-color: var(--iris-blue);
+border: none;
+color: #fff;
 }
 
 .sin-productos{

@@ -75,10 +75,10 @@ export const Products = (generoFiltro) => {
                   <p> {product.category.name} </p>
                   <p className="precio"> ${product.price} </p>
                 </div>
-                <div className="buttom">
-                  <button className="btn">Añadir al carrito</button>
+                <div className="buttom-add">
+                  <button className="btn-a">Añadir al carrito</button>
                 <div>
-                <NavLink to = {`/products/${product.id}`} className="btn">
+                <NavLink to = {`/products/${product.id}`} className="btn-v">
                   Ver producto
                 </NavLink>
               </div>
