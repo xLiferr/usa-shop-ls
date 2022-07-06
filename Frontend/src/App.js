@@ -4,6 +4,7 @@ import { ProtectedLayout } from './components/ProtectedLayout';
 // Shared routes
 import { Profile } from './pages/Profile';
 import { Addresses } from './pages/Profile/Addresses';
+import { CreateAddress } from './pages/Profile/Addresses/CreateAddress';
 import { Shopping } from './pages/Profile/Shopping';
 import { ChangePassword } from './pages/Profile/ChangePassword'
 // Web Admin routes
@@ -40,6 +41,7 @@ function App() {
             <Route element={<ProtectedLayout allowedRoles={["Cliente", "Administrador"]} />}>
               <Route path="/mi-cuenta" element={<Profile />}></Route>
               <Route path="/mi-cuenta/direcciones" element={<Addresses />}></Route>
+              <Route path="/mi-cuenta/direcciones/crear" element={<CreateAddress />}></Route>
               <Route path="/mi-cuenta/compras" element={<Shopping />}></Route>
               <Route path="/mi-cuenta/contrasena" element={<ChangePassword />}></Route>
               <Route path="/carrito" element={<Mujer />}></Route>
