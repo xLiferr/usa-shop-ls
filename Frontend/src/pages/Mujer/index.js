@@ -7,11 +7,11 @@ import { Products } from '../../components/Productos'
 
 export const Mujer = () => {
     return(
-        <div className="Mujer">
+        <>
             <Header/>
             <Categorys/>
             <Products generoFiltro={'Mujer'}/>
             <Footer/>
-        </div>
+        </>
     )
 }

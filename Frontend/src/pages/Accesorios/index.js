@@ -7,12 +7,12 @@ import { ProductsSF } from '../../components/ProductsSF'
 
 export const Accesorios = () => {
     return(
-        <div className="Accesorios">
+        <>
             <Header/>
             <Categorys/>
             <ProductsSF catID={2}/>
             <Footer/>
-        </div>
+        </>
         
     )
 }

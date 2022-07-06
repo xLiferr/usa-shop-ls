@@ -7,11 +7,11 @@ import { ProductsSF } from '../../components/ProductsSF'
 
 export const Mochilas = () => {
     return(
-        <div className="Mochilas">
+        <>
             <Header/>
             <Categorys/>
             <ProductsSF catID={8}/>
             <Footer/>
-        </div>
+        </>
     )
 }

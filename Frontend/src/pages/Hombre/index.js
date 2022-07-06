@@ -6,12 +6,12 @@ import { Categorys } from '../../components/Categorys'
 import { Products } from '../../components/Productos'
 
 export const Hombre = () => {
-    return(
-        <div className="Hombre">
-            <Header/>
-            <Categorys/>
-            <Products generoFiltro={'Hombre'}/>
-            <Footer/>
-        </div>
+    return (
+        <>
+            <Header />
+            <Categorys />
+            <Products generoFiltro={'Hombre'} />
+            <Footer />
+        </>
     )
 }
