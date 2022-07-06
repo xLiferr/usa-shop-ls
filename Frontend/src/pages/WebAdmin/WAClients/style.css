@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 80px;
+  height: auto;
   flex-wrap: wrap;
   background-color: #fff;
   box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);

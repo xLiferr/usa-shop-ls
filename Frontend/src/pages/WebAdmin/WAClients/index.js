@@ -26,7 +26,7 @@ export const WAClients = () => {
   const showClients = useMemo(() => {
     return filterClients.map((client, key) => {
       return (
-        <div className="wa-client-card">
+        <div className="wa-client-card" key={key}>
           <div className="wa-client-card-header">
             <h2>{client.name} {client.second_name}</h2>
           </div>
