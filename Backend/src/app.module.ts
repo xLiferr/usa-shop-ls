@@ -13,12 +13,13 @@ import { OrderDetailModule } from './order-detail/order-detail.module';
 import { OrderItemModule } from './order-item/order-item.module';
 import { PaymentDetailModule } from './payment-detail/payment-detail.module';
 import { ShoppingSessionModule } from './shopping-session/shopping-session.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()), 
-    UserModule, AuthModule, ProductModule, CategoryModule, AddressModule, PaymentModule, OrderDetailModule, OrderItemModule, PaymentDetailModule, ShoppingSessionModule
-  ],
+    UserModule, AuthModule, ProductModule, CategoryModule, AddressModule, PaymentModule, OrderDetailModule, OrderItemModule, PaymentDetailModule, ShoppingSessionModule, FileModule
+   ],
   controllers: [AppController],
   providers: [AppService],
 })
