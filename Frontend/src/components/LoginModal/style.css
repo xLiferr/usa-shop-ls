@@ -120,11 +120,11 @@
 
 .lm-others {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .lm-others button {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--pink);
   border: 0;
   transition: 0.2s ease all;

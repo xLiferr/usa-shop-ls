@@ -61,7 +61,6 @@ export const LoginModal = ({ setOpenLogin, setOpenRegister }) => {
             <div className="lm-buttons">
               <div className="lm-button"><button type="submit">Ingresar</button></div>
               <div className="lm-others">
-                <button>¿Olvidaste tu contraseña?</button>
                 <button className="openModal"
                   onClick={() => {
                     setOpenRegister(true);
