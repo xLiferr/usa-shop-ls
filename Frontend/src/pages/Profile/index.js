@@ -29,12 +29,8 @@ export const Profile = () => {
             <input type="text" disabled value={userInfo.name} />
           </div>
           <div className="profile-section">
-            <h3>Apellido</h3>
+            <h3>Apellidos</h3>
             <input type="text" disabled value={userInfo.second_name} />
-          </div>
-          <div className="profile-section">
-            <h3>RUT</h3>
-            <input type="text" disabled value={userInfo.rut} />
           </div>
           <div className="profile-section">
             <h3>Correo electrónico</h3>
