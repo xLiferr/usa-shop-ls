@@ -18,13 +18,14 @@ const product_module_1 = require("./product/product.module");
 const category_module_1 = require("./category/category.module");
 const address_module_1 = require("./address/address.module");
 const payment_module_1 = require("./payment/payment.module");
+const order_detail_module_1 = require("./order-detail/order-detail.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forRoot(config_service_1.configService.getTypeOrmConfig()),
-            user_module_1.UserModule, auth_module_1.AuthModule, product_module_1.ProductModule, category_module_1.CategoryModule, address_module_1.AddressModule, payment_module_1.PaymentModule
+            user_module_1.UserModule, auth_module_1.AuthModule, product_module_1.ProductModule, category_module_1.CategoryModule, address_module_1.AddressModule, payment_module_1.PaymentModule, order_detail_module_1.OrderDetailModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
