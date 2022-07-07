@@ -8,10 +8,8 @@ import close from "../../images/close.png";
 export const RegisterModal = ({ setOpenRegister }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPass, setConfirmPass] = useState("");
     const [name, setName] = useState("");
     const [secondName, setSecondName] = useState("");
-    const [rut, setRut] = useState("");
     const [telephone, setTelephone] = useState("");
 
     const confirmRegister = () => {
@@ -30,7 +28,6 @@ export const RegisterModal = ({ setOpenRegister }) => {
             password: password,
             name: name,
             second_name: secondName,
-            rut: rut,
             telephone: telephone
         }).then((response) => {
             if (response.status === 201) confirmRegister();              
@@ -60,20 +57,12 @@ export const RegisterModal = ({ setOpenRegister }) => {
                             <label>Contraseña</label>
                         </div>
                         <div className="rm-input">
-                            <input type="password" required value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
-                            <label>Confirmar contraseña</label>
-                        </div>
-                        <div className="rm-input">
                             <input type="text" required value={name} onChange={(e) => setName(e.target.value)} />
                             <label>Nombre</label>
                         </div>
                         <div className="rm-input">
                             <input type="text" required value={secondName} onChange={(e) => setSecondName(e.target.value)} />
                             <label>Apellidos</label>
-                        </div>
-                        <div className="rm-input">
-                            <input type="text" required value={rut} onChange={(e) => setRut(e.target.value)} />
-                            <label>RUT</label>
                         </div>
                         <div className="rm-input">
                             <input type="tel" required value={telephone} onChange={(e) => setTelephone(e.target.value)} />
