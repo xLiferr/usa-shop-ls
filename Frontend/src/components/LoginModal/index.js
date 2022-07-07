@@ -13,9 +13,9 @@ export const LoginModal = ({ setOpenLogin, setOpenRegister }) => {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
 
-  const confirmLogin = async (access_token, role) => {
+  const confirmLogin = async (access_token, id, role) => {
     await successModal('Sesión iniciada!', 'Usted ha iniciado sesión correctamente.', false, 3000);
-    await login({ email, password, role, access_token });
+    await login({ email, password, role, access_token, id });
     setEmail("");
     setPassword("");
     setOpenLogin(false);
@@ -32,7 +32,7 @@ export const LoginModal = ({ setOpenLogin, setOpenRegister }) => {
       username: email,
       password: password
     }).then((response) => {
-      if (response.status === 201) confirmLogin(response.data.access_token, "Administrador");
+      if (response.status === 201) confirmLogin(response.data.access_token, response.data.id, "Administrador");
     }).catch((error) => {
       if (error.response.status === 401) denyLogin();
     })

@@ -26,7 +26,7 @@ export const CreateAddress = () => {
       country: "Chile",
       telephone: telephone,
       mobile: cellphone,
-      user: user.id
+      user_id: parseInt(user.id)
     }).then((response) => {
       if (response.status === 201) successModal('Dirección agregada!', 'La dirección se ha agregado correctamente.', true);
     }).catch(() => errorModal('Error inesperado!', 'Hubo un error al intentar agregar la dirección, Inténtelo nuevamente.'))

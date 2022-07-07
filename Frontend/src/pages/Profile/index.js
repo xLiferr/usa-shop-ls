@@ -12,7 +12,7 @@ export const Profile = () => {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    axios.get('', { access_token: user.access_token, username: user.email }).then((response) => {
+    axios.get(`http://localhost:3001/user/${user.id}`, { access_token: user.access_token }).then((response) => {
       if (response.status === 200) setUserInfo(response.data);
     }).catch(() => setUserInfo({ username: user.email }))
   }, [])
