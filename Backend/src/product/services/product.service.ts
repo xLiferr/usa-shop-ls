@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from 'src/entities/product.entity';
-import { Repository } from 'typeorm';
+import { MoreThan, Repository } from 'typeorm';
 import { Product_category } from 'src/entities/product_category.entity'
 
 
@@ -17,6 +17,9 @@ export class ProductService {
       {
         relations: ['category'],
         /**loadRelationIds: true,**/
+        where: {
+          stock: MoreThan(0),
+        }
       }
     );
   }
