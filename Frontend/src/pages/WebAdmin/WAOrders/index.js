@@ -4,12 +4,32 @@ import axios from "axios";
 import "./style.css";
 import { Footer } from "../../../components/Footer";
 import { SidebarWA } from "../../../components/SidebarWA";
+import { WAOrderModal } from "./WAOrderModal";
 import search from "../../../images/search-ib.png";
 
 export const WAOrders = () => {
   const { user } = useAuth();
   const [searchOrder, setSearchOrder] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [showProduct, setShowProduct] = useState(false);
+  const [selectedDetail, setSelectedDetail] = useState({});
+  const [showDetail, setShowDetail] = useState(false);
   const [orders, setOrders] = useState([]);
+
+  const handleProduct = (product) => {
+    setSelectedProduct({
+      titles: ["Nombre", "Stock", "Price"],
+      data: [product.name, product.stock, product.price]
+    });
+    setShowProduct(true);
+  }
+  const handleDetail = (detail) => {
+    setSelectedDetail({
+      titles: ["Cliente", "Modo de pago", "Total pagado"],
+      data: [detail.user, detail.payment, detail.total]
+    });
+    setShowDetail(true);
+  }
 
   const filterOrders = useMemo(() => {
     return orders.filter((order) => {
@@ -24,8 +44,8 @@ export const WAOrders = () => {
       return (
         <tr key={key}>
           <td>{order.id}</td>
-          <td><button>Ver</button></td>
-          <td><button>Ver</button></td>
+          <td><button  onClick={() => handleDetail(order.order)}>Ver</button></td>
+          <td><button onClick={() => handleProduct(order.product)}>Ver</button></td>
           <td>{order.quantity}</td>
           <td>
             <select defaultValue={order.status} >
@@ -72,6 +92,8 @@ export const WAOrders = () => {
           </table>
         </div>
       </div>
+      {showProduct ? (<WAOrderModal data={selectedProduct} maintitle="Producto" openModal={setShowProduct}/>) : ("")}
+      {showDetail ? (<WAOrderModal data={selectedDetail} maintitle="Detalle del pedido" openModal={setShowDetail}/>) : ("")}
       <Footer />
     </>
   )

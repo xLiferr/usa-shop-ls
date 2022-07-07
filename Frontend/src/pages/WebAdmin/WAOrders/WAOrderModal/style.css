@@ -1,0 +1,95 @@
+.wao-modal-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.wao-modal-card {
+  background-color: #fff;
+  width: fit-content;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px -8px rgb(0, 0, 0, 0.5);
+}
+
+.wao-modal-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.wao-modal-section h3 {
+  color: var(--pink);
+  margin: 10px 0 10px 0;
+}
+
+.wao-modal-section input {
+  padding: 5px 15px 5px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 3px solid var(--iris-blue);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.wao-modal-button button {
+  padding: 5px 15px 5px 15px;
+  outline: none;
+  background-color: var(--iris-blue);
+  border: none;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.wao-modal-button button:hover {
+  background-color: var(--pink);
+}
+
+@media (min-width: 0px) {  
+  .wao-modal-section input, .wao-modal-section h3 {
+    width: 300px;
+    font-size: 14px;
+  }
+  .wao-modal-button button{
+    width: 100px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) {
+  .wao-modal-section input,.wao-modal-section h3 {
+    width: 340px;
+    font-size: 16px;
+  }
+  .wao-modal-button button{
+    width: 120px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .wao-modal-section input, .wao-modal-section h3 {
+    width: 600px;
+    font-size: 20px;
+  }
+  .wao-modal-button button{
+    width: 150px;
+    font-size: 20px;
+  }
+}

@@ -85,3 +85,35 @@
   cursor: pointer;
   background-color: #f0706725;
 }
+
+.wa-orders-content select {
+  width: fit-content;
+  height: 40px;
+  background-color: none;
+  border: 2px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 16px;
+  transition: 0.2s ease-in;
+}
+
+.wa-orders-content button {
+  width: 100px;
+  height: 40px;
+  background-color: var(--iris-blue);
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.wa-orders-content button:hover {
+  background-color: var(--pink);
+}
