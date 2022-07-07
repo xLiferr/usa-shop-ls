@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { successModal, errorModal } from "../../utils/infoModals";
 import axios from "axios";
-import Swal from "sweetalert2";
 import "./style.css";
 // Icons
 import logo from "../../images/logo.png";

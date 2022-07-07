@@ -10,15 +10,15 @@ export const OrderTable = ({ data, detailText, type }) => {
 
   const handleProduct = (product) => {
     setSelectedProduct({
-      titles: ["Nombre", "Stock", "Price"],
-      data: [product.name, product.stock, product.price]
+      titles: ["Nombre", "Stock", "Price", "Categoría"],
+      data: [product.name, product.stock, product.price, product.category.name]
     });
     setShowProduct(true);
   }
   const handleDetail = (detail) => {
     setSelectedDetail({
       titles: ["Cliente", "Modo de pago", "Total pagado"],
-      data: [detail.user, detail.payment, detail.total]
+      data: [detail.user.name + " " + detail.user.second_name, detail.payment, detail.total]
     });
     setShowDetail(true);
   }
