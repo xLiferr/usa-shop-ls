@@ -22,7 +22,8 @@ import { Hombre } from './pages/Hombre';
 import { Mochilas } from './pages/Mochilas';
 import { Mujer } from './pages/Mujer';
 import { NotFound } from './pages/NotFound';
-import { Product } from './pages/Product'
+import { Product } from './pages/Product';
+import { Cart } from './pages/Cart';
 
 import "./App.css";
 
@@ -46,7 +47,7 @@ function App() {
               <Route path="/mi-cuenta/direcciones/crear" element={<CreateAddress />}></Route>
               <Route path="/mi-cuenta/compras" element={<Shopping />}></Route>
               <Route path="/mi-cuenta/contrasena" element={<ChangePassword />}></Route>
-              <Route path="/carrito" element={<Mujer />}></Route>
+              <Route path="/carrito" element={<Cart />}></Route>
             </Route>
             <Route element={<ProtectedLayout allowedRoles={["Administrador"]} />}>
               <Route path="/web-admin" element={<WebAdmin />}></Route>

@@ -43,7 +43,7 @@ export const Header = () => {
                     </Link>
                 ) : ("")}
                 <Link className="header-button" to="/carrito">
-                    <img src={carrito} alt='' className="header-carritoIMG" />
+                    <img src={carrito} alt='' className="header-carritoIMG"/>
                 </Link>
                 <button className="header-button" onClick={async () => await logout()}>
                     <img src={logoutIcon} alt="Cerrar sesión" className="bn-modal" />
