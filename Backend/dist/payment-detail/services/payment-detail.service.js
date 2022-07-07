@@ -12,52 +12,49 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderDetailService = void 0;
+exports.PaymentDetailService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const order_detail_entity_1 = require("../../entities/order_detail.entity");
+const payment_detail_entity_1 = require("../../entities/payment_detail.entity");
 const typeorm_2 = require("typeorm");
-let OrderDetailService = class OrderDetailService {
-    constructor(orderDetailRepo) {
-        this.orderDetailRepo = orderDetailRepo;
+let PaymentDetailService = class PaymentDetailService {
+    constructor(paymentDetailRepo) {
+        this.paymentDetailRepo = paymentDetailRepo;
     }
-    getOrdersDetail() {
-        return this.orderDetailRepo.find({
+    getPaymentsDetail() {
+        return this.paymentDetailRepo.find({
             loadRelationIds: true,
         });
     }
-    async getOrderDetail(id) {
-        return await this.orderDetailRepo.findOne(id, {
+    async getPaymentDetail(id) {
+        return await this.paymentDetailRepo.findOne(id, {
             loadRelationIds: true,
-        });
-    }
-    async getOrderDetailsByUser(userId) {
-        return await this.orderDetailRepo.find({
-            where: { user: userId }
         });
     }
     async create(body) {
-        const newOrderDetail = new order_detail_entity_1.Order_detail();
-        newOrderDetail.total = body.total;
-        newOrderDetail.user = body.user;
-        return await this.orderDetailRepo.save(newOrderDetail);
+        const newPaymentDetail = new payment_detail_entity_1.Payment_detail();
+        newPaymentDetail.amount = body.amount;
+        newPaymentDetail.order = body.order;
+        newPaymentDetail.provider = body.provider;
+        newPaymentDetail.status = body.status;
+        return await this.paymentDetailRepo.save(newPaymentDetail);
     }
     async update(id, body) {
-        const orderDetail = await this.getOrderDetail(id);
-        if (!orderDetail) {
-            throw new common_1.BadRequestException('La orden no existe en el sistema.');
+        const paymentDetail = await this.getPaymentDetail(id);
+        if (!paymentDetail) {
+            throw new common_1.BadRequestException('El detalle de pago no existe en el sistema.');
         }
-        this.orderDetailRepo.merge(orderDetail, body);
-        return await this.orderDetailRepo.save(orderDetail);
+        this.paymentDetailRepo.merge(paymentDetail, body);
+        return await this.paymentDetailRepo.save(paymentDetail);
     }
     async delete(id) {
-        return await this.orderDetailRepo.delete(id);
+        return await this.paymentDetailRepo.delete(id);
     }
 };
-OrderDetailService = __decorate([
+PaymentDetailService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(order_detail_entity_1.Order_detail)),
+    __param(0, (0, typeorm_1.InjectRepository)(payment_detail_entity_1.Payment_detail)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
-], OrderDetailService);
-exports.OrderDetailService = OrderDetailService;
-//# sourceMappingURL=order-detail.service.js.map
+], PaymentDetailService);
+exports.PaymentDetailService = PaymentDetailService;
+//# sourceMappingURL=payment-detail.service.js.map

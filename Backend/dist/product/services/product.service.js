@@ -26,6 +26,9 @@ let ProductService = class ProductService {
     getProducts() {
         return this.productsRepo.find({
             relations: ['category'],
+            where: {
+                stock: (0, typeorm_2.MoreThan)(0),
+            }
         });
     }
     async getProduct(id) {

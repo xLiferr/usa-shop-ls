@@ -12,52 +12,58 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderDetailService = void 0;
+exports.OrderItemService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const order_detail_entity_1 = require("../../entities/order_detail.entity");
+const order_item_entity_1 = require("../../entities/order_item.entity");
 const typeorm_2 = require("typeorm");
-let OrderDetailService = class OrderDetailService {
-    constructor(orderDetailRepo) {
-        this.orderDetailRepo = orderDetailRepo;
+let OrderItemService = class OrderItemService {
+    constructor(orderItemRepo) {
+        this.orderItemRepo = orderItemRepo;
     }
-    getOrdersDetail() {
-        return this.orderDetailRepo.find({
+    getOrdersItem() {
+        return this.orderItemRepo.find({
             loadRelationIds: true,
         });
     }
-    async getOrderDetail(id) {
-        return await this.orderDetailRepo.findOne(id, {
+    async getOrderItem(id) {
+        return await this.orderItemRepo.findOne(id, {
             loadRelationIds: true,
         });
     }
-    async getOrderDetailsByUser(userId) {
-        return await this.orderDetailRepo.find({
-            where: { user: userId }
+    async getOrderItemByOrder(orderId) {
+        return await this.orderItemRepo.find({
+            where: { order: orderId }
+        });
+    }
+    async getOrderItemByProduct(productId) {
+        return await this.orderItemRepo.find({
+            where: { product: productId }
         });
     }
     async create(body) {
-        const newOrderDetail = new order_detail_entity_1.Order_detail();
-        newOrderDetail.total = body.total;
-        newOrderDetail.user = body.user;
-        return await this.orderDetailRepo.save(newOrderDetail);
+        const newOrderItem = new order_item_entity_1.Order_item();
+        newOrderItem.order = body.order;
+        newOrderItem.product = body.product;
+        newOrderItem.quantity = body.quantity;
+        return await this.orderItemRepo.save(newOrderItem);
     }
     async update(id, body) {
-        const orderDetail = await this.getOrderDetail(id);
-        if (!orderDetail) {
+        const orderItem = await this.getOrderItem(id);
+        if (!orderItem) {
             throw new common_1.BadRequestException('La orden no existe en el sistema.');
         }
-        this.orderDetailRepo.merge(orderDetail, body);
-        return await this.orderDetailRepo.save(orderDetail);
+        this.orderItemRepo.merge(orderItem, body);
+        return await this.orderItemRepo.save(orderItem);
     }
     async delete(id) {
-        return await this.orderDetailRepo.delete(id);
+        return await this.orderItemRepo.delete(id);
     }
 };
-OrderDetailService = __decorate([
+OrderItemService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(order_detail_entity_1.Order_detail)),
+    __param(0, (0, typeorm_1.InjectRepository)(order_item_entity_1.Order_item)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
-], OrderDetailService);
-exports.OrderDetailService = OrderDetailService;
-//# sourceMappingURL=order-detail.service.js.map
+], OrderItemService);
+exports.OrderItemService = OrderItemService;
+//# sourceMappingURL=order-item.service.js.map
