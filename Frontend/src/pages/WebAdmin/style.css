@@ -1,0 +1,64 @@
+.wa-dashboard-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
+  background-color: #fff;
+  padding-left: 50px;
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+}
+
+.wa-dashboard-header h2 {
+  font-size: 30px;
+  color: var(--iris-blue);
+}
+
+.wa-dashboard-content{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.wa-dashboard-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.35);
+  margin: 10px;
+  padding: 10px;
+}
+
+.wa-dashboard-item h3 {
+  color: var(--iris-blue);
+  font-size: 30px;
+}
+
+.wa-dashboard-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wa-dashboard-item select {
+  width: fit-content;
+  background-color: none;
+  border: 2px solid var(--iris-blue);
+  outline: none;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--iris-blue);
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.wa-dashboard-item select:focus {
+  border: 2px solid var(--pink);
+  color: var(--pink);
+}
