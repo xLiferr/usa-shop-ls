@@ -59,6 +59,28 @@
   align-items: center;
 }
 
+.addresses-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addresses-item-header button {
+  display: flex;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: var(--iris-blue);
+  transition: 0.3s ease;
+}
+
+.addresses-item-header button:hover {
+  color: var(--pink);
+}
+
 .addresses-item h3 {
   color: var(--pink);
   margin: 10px 0 10px 0;

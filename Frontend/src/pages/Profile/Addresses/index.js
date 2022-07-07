@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../../hooks/useAuth";
+import { askModal, successModal, errorModal } from "../../../utils/infoModals";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { Footer } from '../../../components/Footer'
@@ -8,11 +9,19 @@ import { Header } from '../../../components/Header'
 import { Categorys } from '../../../components/Categorys'
 import { ProfileMenu } from "../ProfileMenu";
 import addIcon from "../../../images/add.png";
+import deleteIcon from "../../../images/delete.png";
 
 
 export const Addresses = () => {
   const { user } = useAuth();
   const [userAddresses, setUserAddresses] = useState([]);
+  const handleDelete = async (address) => {
+    if (await askModal('¿Eliminar dirección?', 'Si eliminas la dirección, se eliminará de forma permanente de la tienda.', 'No, mantener dirección', 'Sí, eliminar dirección')) {
+      axios.delete(`http://localhost:3001/address/${address.id}`).then((response) => {
+        if (response.status === 200) successModal("Dirección eliminada!", "La dirección fue eliminada correctamente", true);
+      }).catch(() => errorModal('Error inesperado!', 'Hubo un error al intentar eliminar la dirección, Inténtelo nuevamente.'))
+    }
+  }
   useEffect(() => {
     axios.get(`http://localhost:3001/address/user/${user.id}`).then((response) => {
       if (response.status === 200) setUserAddresses(response.data);
@@ -40,7 +49,13 @@ export const Addresses = () => {
             {userAddresses.map((address, key) => {
               return (
                 <div className="addresses-items" key={key}>
-                  <h2>Dirección {key + 1}</h2>
+                  <div className="addresses-item-header">
+                    <h2>Dirección {key + 1}</h2>
+                    <button onClick={() => handleDelete(address)}>
+                      <img src={deleteIcon} alt="" />
+                      Eliminar
+                    </button>
+                  </div>
                   <div className="addresses-item">
                     <h3>Dirección</h3>
                     <input disabled type="text" value={address.address} />
