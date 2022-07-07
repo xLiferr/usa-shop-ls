@@ -21,7 +21,7 @@ export const WAOrders = () => {
   }, [searchOrder, orders])
 
   useEffect(() => {
-    axios.get('', { access_token: user.access_token }).then((response) => {
+    axios.get('http://localhost:3001/order-item/all', { access_token: user.access_token }).then((response) => {
       if (response.status === 200) setOrders(response.data);
     }).catch(() => setOrders([]));
   }, [])
