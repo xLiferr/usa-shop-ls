@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { NavLink } from 'react-router-dom';
 
+
 export const Products = (generoFiltro) => {
 
   const [data, setData] = useState([]);
@@ -15,6 +16,8 @@ export const Products = (generoFiltro) => {
     }
     return x.gender === genero.generoFiltro
   });
+
+
 
   useEffect(() => {
     const getProducts = async() => {
@@ -94,8 +97,8 @@ export const Products = (generoFiltro) => {
   }
 
   return (
-    <div className="productos">
+    <>
       {loading ? <Loading/> : <ShowProducts/>}
-    </div>
+    </>
   );
 };

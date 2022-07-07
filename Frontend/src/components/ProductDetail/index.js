@@ -4,10 +4,13 @@ import { useParams } from 'react-router';
 import MGN from "../../images/MGN.jpg";
 
 
+
 export const ProductDetail = () => {
   const {id} = useParams();
   const [product,setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+
+
 
   useEffect(() => {
       const getProduct =  async () => {
@@ -29,6 +32,8 @@ export const ProductDetail = () => {
 
 
   const ShowProduct = () => {
+
+
     return(
       <div className='container'>
         <div className='aa'>
