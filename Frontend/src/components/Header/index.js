@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useAuth } from "../../hooks/useAuth";
@@ -15,12 +15,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Components
 import { LoginModal } from '../LoginModal';
 import { RegisterModal } from '../RegisterModal';
+import DataContext from "../../context/DataProvider";
 
 export const Header = () => {
     const [busqueda, setBusqueda] = useState("");
     const [openLogin, setOpenLogin] = useState(false);
     const [openRegister, setOpenRegister] = useState(false);
     const { user, logout } = useAuth();
+    const value = useContext(DataContext);
+    const [menu,setMenu] = value.menu;
+    const toogleMenu = () =>{
+        setMenu(!menu);
+    }
+
+
     const handleChange = e => {
         setBusqueda(e.target.value);
     }
@@ -42,9 +50,9 @@ export const Header = () => {
                         </div>
                     </Link>
                 ) : ("")}
-                <Link className="header-button" to="/carrito">
+                <div className="header-button" onClick={toogleMenu}>
                     <img src={carrito} alt='' className="header-carritoIMG"/>
-                </Link>
+                </div>
                 <button className="header-button" onClick={async () => await logout()}>
                     <img src={logoutIcon} alt="Cerrar sesión" className="bn-modal" />
                 </button>

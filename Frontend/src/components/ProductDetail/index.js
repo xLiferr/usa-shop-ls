@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "./style.css";
 import { useParams } from 'react-router';
 import MGN from "../../images/MGN.jpg";
+import DataContext, { DataProvider } from '../../context/DataProvider';
 
 
 
@@ -9,6 +10,10 @@ export const ProductDetail = () => {
   const {id} = useParams();
   const [product,setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [cart, setCart] = useState([]);
+  const value = useContext(DataContext);
+  const [productos] = value.productos;
+  console.log('productosss',productos);
 
 
 
@@ -21,6 +26,7 @@ export const ProductDetail = () => {
       }
       getProduct();
   }, [])
+
 
   const Loading = () => {
       return(

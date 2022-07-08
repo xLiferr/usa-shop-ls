@@ -24,43 +24,51 @@ import { Mujer } from './pages/Mujer';
 import { NotFound } from './pages/NotFound';
 import { Product } from './pages/Product';
 import { Cart } from './pages/Cart';
+import { DataProvider } from './context/DataProvider';
+
+import { Carrito } from './components/Carrito';
 
 import "./App.css";
 
 function App() {
   return (
-    <div className='usa-shop'>
-      <Router>
-        <AuthProvider>
-          <Routes>
-            <Route path="*" element={<NotFound />}></Route>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/accesorios" element={<Accesorios />}></Route>
-            <Route path="/carteras" element={<Carteras />}></Route>
-            <Route path="/hombre" element={<Hombre />}></Route>
-            <Route path="/mochilas" element={<Mochilas />}></Route>
-            <Route path="/mujer" element={<Mujer />}></Route>
-            <Route path="/products/:id" element={<Product />}></Route>
-            <Route element={<ProtectedLayout allowedRoles={["Cliente", "Administrador"]} />}>
-              <Route path="/mi-cuenta" element={<Profile />}></Route>
-              <Route path="/mi-cuenta/direcciones" element={<Addresses />}></Route>
-              <Route path="/mi-cuenta/direcciones/crear" element={<CreateAddress />}></Route>
-              <Route path="/mi-cuenta/compras" element={<Shopping />}></Route>
-              <Route path="/mi-cuenta/contrasena" element={<ChangePassword />}></Route>
-              <Route path="/carrito" element={<Cart />}></Route>
-            </Route>
-            <Route element={<ProtectedLayout allowedRoles={["Administrador"]} />}>
-              <Route path="/web-admin" element={<WebAdmin />}></Route>
-              <Route path="/web-admin/agregar-producto" element={<WAAddProduct />}></Route>
-              <Route path="/web-admin/productos" element={<WAProducts />}></Route>
-              <Route path="/web-admin/categorias" element={<WACategories />}></Route>
-              <Route path="/web-admin/pedidos" element={<WAOrders />}></Route>
-              <Route path="/web-admin/clientes" element={<WAClients />}></Route>
-            </Route>
-          </Routes>
-        </AuthProvider>
-      </Router>
-    </div>
+      <div className='usa-shop'>
+            <Router>
+              <AuthProvider>
+                <DataProvider>
+                  <Carrito/>
+                <Routes>
+                  <Route path="*" element={<NotFound />}></Route>
+                  <Route path="/" element={<Home />}></Route>
+                  <Route path="/accesorios" element={<Accesorios />}></Route>
+                  <Route path="/carteras" element={<Carteras />}></Route>
+                  <Route path="/hombre" element={<Hombre />}></Route>
+                  <Route path="/mochilas" element={<Mochilas />}></Route>
+                  <Route path="/mujer" element={<Mujer />}></Route>
+                  <Route path="/products/:id" element={<Product />}></Route>
+                  <Route element={<ProtectedLayout allowedRoles={["Cliente", "Administrador"]} />}>
+                    <Route path="/mi-cuenta" element={<Profile />}></Route>
+                    <Route path="/mi-cuenta/direcciones" element={<Addresses />}></Route>
+                    <Route path="/mi-cuenta/direcciones/crear" element={<CreateAddress />}></Route>
+                    <Route path="/mi-cuenta/compras" element={<Shopping />}></Route>
+                    <Route path="/mi-cuenta/contrasena" element={<ChangePassword />}></Route>
+                    <Route path="/carrito" element={<Cart />}></Route>
+                  </Route>
+                  <Route element={<ProtectedLayout allowedRoles={["Administrador"]} />}>
+                    <Route path="/web-admin" element={<WebAdmin />}></Route>
+                    <Route path="/web-admin/agregar-producto" element={<WAAddProduct />}></Route>
+                    <Route path="/web-admin/productos" element={<WAProducts />}></Route>
+                    <Route path="/web-admin/categorias" element={<WACategories />}></Route>
+                    <Route path="/web-admin/pedidos" element={<WAOrders />}></Route>
+                    <Route path="/web-admin/clientes" element={<WAClients />}></Route>
+                  </Route>
+                </Routes>
+
+                </DataProvider>
+              
+              </AuthProvider>
+            </Router>
+          </div>
   );
 }
 
