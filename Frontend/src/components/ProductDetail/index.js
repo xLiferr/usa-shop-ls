@@ -39,7 +39,7 @@ export const ProductDetail = () => {
         setImageURL(URL.createObjectURL(response.data));
       }).catch(() => setImageURL(""))
     }
-  }, [])
+  }, [product])
 
 
   const ShowProduct = () => {
