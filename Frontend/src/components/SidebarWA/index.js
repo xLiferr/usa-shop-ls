@@ -31,12 +31,6 @@ export const SidebarWA = () => {
         </div>
         <ul className="wa-sidebar-items">
           <li className="wa-sidebar-item">
-            <Link className="wa-sidebar-link" to="/web-admin">
-              <img className="wa-sidebar-icon" src={sales} alt="" />
-              Reporte de ventas
-            </Link>
-          </li>
-          <li className="wa-sidebar-item">
             <Link className="wa-sidebar-link" to="/web-admin/agregar-producto">
               <img className="wa-sidebar-icon" src={addProducts} alt="" />
               Agregar un producto
