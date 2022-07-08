@@ -90,6 +90,20 @@
     margin-left: -1rem;
 }
 
+.carrito-arrows{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.remove-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .carrito-item box-icon{
     fill: #08a05c;
     width: 40ox;

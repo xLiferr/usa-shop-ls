@@ -88,7 +88,7 @@ export const Carrito = () => {
                             <h3> {producto.name} </h3>
                             <p className='price'>${producto.price}</p>
                         </div>
-                        <div>
+                        <div className='carrito-arrows'>
                             <box-icon name='up-arrow' type = 'solid' onClick = {() => suma(producto.id)}></box-icon> 
                             <p className='cantidad'> {producto.stock}</p>
                             <box-icon name='down-arrow' type = 'solid' onClick = {() => resta(producto.id)}></box-icon> 
