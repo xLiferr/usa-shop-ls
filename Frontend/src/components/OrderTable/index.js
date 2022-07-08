@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import "./style.css";
 import { OrderModal } from "../OrderModal";
+import axios from "axios";
 
 export const OrderTable = ({ data, detailText, type }) => {
   const [selectedProduct, setSelectedProduct] = useState({});
@@ -8,19 +9,32 @@ export const OrderTable = ({ data, detailText, type }) => {
   const [selectedDetail, setSelectedDetail] = useState({});
   const [showDetail, setShowDetail] = useState(false);
 
-  const handleProduct = (product) => {
-    setSelectedProduct({
-      titles: ["Nombre", "Stock", "Price", "Categoría"],
-      data: [product.name, product.stock, product.price, product.category.name]
-    });
-    setShowProduct(true);
+  const handleProduct = (product, quantity) => {
+    axios.get(`http://localhost:3001/products/${product}`).then((response) => {
+      if (response.status === 200) {
+        setSelectedProduct({
+          titles: ["Nombre", "Categoría", "Cantidad comprada"],
+          data: [response.data.name, response.data.category.name, quantity]
+        });
+        setShowProduct(true);
+      }
+    })  
   }
-  const handleDetail = (detail) => {
-    setSelectedDetail({
-      titles: ["Cliente", "Modo de pago", "Total pagado"],
-      data: [detail.user.name + " " + detail.user.second_name, detail.payment, detail.total]
-    });
-    setShowDetail(true);
+  const handleDetail =  (detail) => {
+    axios.get(`http://localhost:3001/order-detail/${detail}`).then((response) => {
+      if (response.status === 200) {
+        console.log(response.data.user)
+        axios.get(`http://localhost:3001/address/user/${response.data.user}`).then((resp) => {
+          if (resp.status === 200) {
+            setSelectedDetail({
+              titles: ["Dirección del cliente", "Ciudad", "Teléfono", "Total pagado"],
+              data: [resp.data.address, resp.data.city, resp.data.mobile, response.data.total]
+            });
+            setShowDetail(true);
+          }
+        })
+      }
+    })
   }
 
   const showOrders = useMemo(() => {
@@ -29,7 +43,7 @@ export const OrderTable = ({ data, detailText, type }) => {
         <tr key={key}>
           <td>{order.id}</td>
           <td><button onClick={() => handleDetail(order.order)}>Ver</button></td>
-          <td><button onClick={() => handleProduct(order.product)}>Ver</button></td>
+          <td><button onClick={() => handleProduct(order.product, order.quantity)}>Ver</button></td>
           <td>{order.quantity}</td>
           <td>
             {type === "Administrador" ? (
