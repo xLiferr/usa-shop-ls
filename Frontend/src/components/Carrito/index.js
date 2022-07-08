@@ -3,7 +3,7 @@ import './style.css';
 import MGN from "../../images/MGN.jpg";
 import 'boxicons';
 import  DataContext  from '../../context/DataProvider';
-import { askModal, successModal, errorModal } from "../../utils/infoModals";
+import { askModal, successModal2, errorModal } from "../../utils/infoModals";
 
 
 
@@ -19,7 +19,7 @@ export const Carrito = () => {
     const handleDelete = async (id) => {
         if (await askModal('¿Eliminar producto?', 'Si eliminas el producto, se eliminará de tu carrito.', 'No, mantener producto', 'Sí, eliminar producto')) {
             removeProduct(id);
-            successModal("Producto eliminado!", "El producto fue eliminado correctamente", true);
+            successModal2("Producto eliminado!", "El producto fue eliminado correctamente", true);
 
         }
       }

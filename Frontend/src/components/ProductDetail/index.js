@@ -3,6 +3,7 @@ import "./style.css";
 import { useParams } from 'react-router';
 import MGN from "../../images/MGN.jpg";
 import DataContext, { DataProvider } from '../../context/DataProvider';
+import axios from "axios";
 
 
 
@@ -10,13 +11,10 @@ export const ProductDetail = () => {
   const {id} = useParams();
   const [product,setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [cart, setCart] = useState([]);
   const value = useContext(DataContext);
-  const [productos] = value.productos;
   const addCarrito = value.addCarrito;
-
-
-
+  const [imageURL, setImageURL] = useState("");
+  
   useEffect(() => {
       const getProduct =  async () => {
           setLoading(true);
@@ -35,6 +33,13 @@ export const ProductDetail = () => {
         </>
       );
   }
+  useEffect(() => {
+    if (product.avatar_id !== null) {
+      axios.get(`http://localhost:3001/file/${product.avatar_id}`, { responseType: "blob" }).then((response) => {
+        setImageURL(URL.createObjectURL(response.data));
+      }).catch(() => setImageURL(""))
+    }
+  }, [])
 
 
   const ShowProduct = () => {
@@ -43,7 +48,7 @@ export const ProductDetail = () => {
     return(
       <div className='container'>
         <div className='aa'>
-          <img src= {MGN} alt={product.name}/>
+          <img src= {imageURL} alt={product.name}/>
         </div>
         <div className='bb'>
           <h3>{product.name}</h3>

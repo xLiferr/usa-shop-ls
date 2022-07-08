@@ -13,6 +13,18 @@ export const successModal = async (title, text, reload, timer) => {
   })
 }
 
+export const successModal2 = async (title, text, reload, timer) => {
+  await Swal.fire({
+    title: title,
+    text: text,
+    icon: 'success',
+    confirmButtonText: 'Continuar',
+    confirmButtonColor: '#00AFB9',
+    timer: timer
+  }).then((result) => {
+  })
+}
+
 export const errorModal = (title, text) => {
   Swal.fire({
     title: title,

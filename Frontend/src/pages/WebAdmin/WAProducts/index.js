@@ -36,7 +36,7 @@ export const WAProducts = () => {
   }
   const filterProducts = useMemo(() => {
     return products.filter((product) => {
-      if (searchedProduct === "" && selectedCategory === -1) return true;
+      if (searchedProduct === product.name && selectedCategory === -1) return true;
       if (product.name.toLowerCase().includes(searchedProduct.toLowerCase())) return true;
       return false;
     })
@@ -82,7 +82,7 @@ export const WAProducts = () => {
               <img src={search} alt="" />
               <input type="text" placeholder="Buscar un producto" onChange={(e) => setSearchedProduct(e.target.value)} />
             </div>
-            <div className="wap-filters">
+            {/*<div className="wap-filters">
               <label>Categoría</label>
               <select defaultValue="Elegir categoría" required onChange={(e) =>  setSelectedCategory(e.target.value)}>
                 <option value="">Elegir categoría</option>
@@ -90,7 +90,7 @@ export const WAProducts = () => {
                   return <option key={key} value={category.id}>{category.name}</option>
                 })}
               </select>
-            </div>
+              </div>*/}
           </div>
         </div>
         {isEditing ? (

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import "./style.css";
 import { NavLink } from 'react-router-dom';
 import DataContext, { DataProvider } from '../../context/DataProvider';
+import axios from "axios";
 
 
 export const Products = (generoFiltro) => {
@@ -11,10 +12,9 @@ export const Products = (generoFiltro) => {
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
   const genero = generoFiltro;
-  const [cart, setCart] = useState([]);
   const value = useContext(DataContext);
-  const [productos] = value.productos;
   const addCarrito = value.addCarrito;
+  const [imageURL, setImageURL] = useState("");
 
   const filtro = data.filter((x)=>{
     if(filter !== -1){
@@ -54,6 +54,8 @@ export const Products = (generoFiltro) => {
   const filterProduct = (cat) => {
     setFilter(cat);
   }
+
+  
 
   
 
