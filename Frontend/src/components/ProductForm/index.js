@@ -15,6 +15,7 @@ export const ProductForm = ({ product = {}, type }) => {
   const [category, setCategory] = useState(product ? (product.category) : (-1));
   const [stock, setStock] = useState(product ? (product.stock) : (-1));
   const [price, setPrice] = useState(product ? (product.price) : (-1));
+  const [gender, setGender] = useState(product ? (product.gender) : (""));
   const { user } = useAuth();
   const handleEdit = (event) => {
     event.preventDefault();
@@ -24,10 +25,11 @@ export const ProductForm = ({ product = {}, type }) => {
     })
     axios.put(`http://localhost:3001/products/${product.id}`, {
       access_token: user.access_token,
-      name: product.name,
-      category: parseInt(product.category),
-      stock: parseInt(product.stock),
-      price: parseInt(product.price)
+      name: name,
+      category: parseInt(category),
+      stock: parseInt(stock),
+      price: parseInt(price),
+      gender: gender
     }).then((response) => {
       if (response.status === 201) successModal('Producto modificado!', 'El producto se ha modificado correctamente.', true);
     }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar modificar el producto, Inténtelo nuevamente.') });
@@ -37,7 +39,6 @@ export const ProductForm = ({ product = {}, type }) => {
     let formDataImages = new FormData();
     formDataImages.append("file", selectedImages[0]);
     formDataImages.append("name", selectedImages[0].name);
-    console.log(formDataImages);
     axios.post(`http://localhost:3001/products/${id}/img`, formDataImages).then((response) => {
       if (response.status === 201) successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
     }).catch((error) => {
@@ -52,7 +53,8 @@ export const ProductForm = ({ product = {}, type }) => {
       name: name,
       category: parseInt(category),
       stock: parseInt(stock),
-      price: parseInt(price)
+      price: parseInt(price),
+      gender: gender
     }).then(async (response) => {
       if (response.status === 201) {
         handleUploadImage(response.data.id);
@@ -92,6 +94,14 @@ export const ProductForm = ({ product = {}, type }) => {
                 {categories.map((category, key) => {
                   return <option key={key} value={category.id}>{category.name}</option>
                 })}
+              </select>
+            </div>
+            <div className="prodForm-form-item">
+              <h4>Género</h4>
+              <select defaultValue={gender} required onChange={(e) => setGender(e.target.value)}>
+                <option value="">Elegir género</option>
+                <option value={"Hombre"}>Hombre</option>
+                <option value={"Mujer"}>Mujer</option>
               </select>
             </div>
             <div className="prodForm-form-item">

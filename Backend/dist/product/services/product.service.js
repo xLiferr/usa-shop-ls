@@ -50,6 +50,7 @@ let ProductService = class ProductService {
         newProduct.category = body.category;
         newProduct.price = body.price;
         newProduct.stock = body.stock;
+        newProduct.gender = body.gender;
         const searchCategory = await this.productsCategoryRepo.findOne({
             where: { id: newProduct.category }
         });
