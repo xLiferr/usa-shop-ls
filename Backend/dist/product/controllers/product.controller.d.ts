@@ -1,3 +1,4 @@
+/// <reference types="multer" />
 import { CreateProductDto } from '../dtos/product.dto';
 import { ProductService } from '../services/product.service';
 export declare class ProductController {
@@ -6,6 +7,7 @@ export declare class ProductController {
     findAll(): Promise<import("../../entities/product.entity").Product[]>;
     findOne(id: string): Promise<import("../../entities/product.entity").Product>;
     createProduct(body: CreateProductDto): Promise<import("../../entities/product.entity").Product>;
+    addAvatar(id: string, file: Express.Multer.File): Promise<import("../../entities/file.entity").File>;
     updateProduct(id: string, body: any): Promise<import("../../entities/product.entity").Product>;
     deleteProduct(id: string): Promise<import("typeorm").DeleteResult>;
 }

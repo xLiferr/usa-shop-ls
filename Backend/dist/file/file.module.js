@@ -20,7 +20,8 @@ FileModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([file_entity_1.File])
         ],
         controllers: [file_controller_1.FileController],
-        providers: [file_service_1.FileService]
+        providers: [file_service_1.FileService],
+        exports: [file_service_1.FileService],
     })
 ], FileModule);
 exports.FileModule = FileModule;

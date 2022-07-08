@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
 const product_dto_1 = require("../dtos/product.dto");
 const product_service_1 = require("../services/product.service");
 let ProductController = class ProductController {
@@ -28,6 +29,9 @@ let ProductController = class ProductController {
     }
     createProduct(body) {
         return this.productService.create(body);
+    }
+    async addAvatar(id, file) {
+        return this.productService.addImg(parseInt(id), file.buffer, file.originalname);
     }
     updateProduct(id, body) {
         return this.productService.update(id, body);
@@ -56,6 +60,15 @@ __decorate([
     __metadata("design:paramtypes", [product_dto_1.CreateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "createProduct", null);
+__decorate([
+    (0, common_1.Post)(':id/img'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], ProductController.prototype, "addAvatar", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),

@@ -26,10 +26,25 @@ let FileService = class FileService {
             filename,
             data: dataBuffer
         });
-        return await this.fileRepo.save(newFile);
+        await this.fileRepo.save(newFile);
+        return newFile;
     }
-    async getFileById(fileId) {
-        return await this.fileRepo.findOne(fileId);
+    async uploadDatabaseFileWithQueryRunner(dataBuffer, filename, queryRunner) {
+        const newFile = await queryRunner.manager.create(file_entity_1.File, {
+            filename,
+            data: dataBuffer
+        });
+        await queryRunner.manager.save(file_entity_1.File, newFile);
+        return newFile;
+    }
+    async getFileById(id) {
+        return await this.fileRepo.findOne(id);
+    }
+    async deleteFileWithQueryRunner(id, queryRunner) {
+        const deleteResponse = await queryRunner.manager.delete(file_entity_1.File, id);
+        if (!deleteResponse.affected) {
+            throw new common_1.NotFoundException();
+        }
     }
 };
 FileService = __decorate([

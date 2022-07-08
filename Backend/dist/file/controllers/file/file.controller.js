@@ -26,12 +26,15 @@ let FileController = class FileController {
     }
     async getDatabaseFileById(id, response) {
         const file = await this.FileService.getFileById(id);
-        const stream = stream_1.Readable.from(file.data);
-        response.set({
-            'Content-Disposition': `inline; filename="${file.filename}"`,
-            'Content-Type': 'image'
-        });
-        return new common_1.StreamableFile(stream);
+        if (file) {
+            const stream = stream_1.Readable.from(file.data);
+            response.set({
+                'Content-Disposition': `inline; filename="${file.filename}"`,
+                'Content-Type': 'image'
+            });
+            return new common_1.StreamableFile(stream);
+        }
+        throw new common_1.NotFoundException('No img');
     }
 };
 __decorate([
@@ -44,7 +47,7 @@ __decorate([
 ], FileController.prototype, "addFile", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe, Post, Req, Res, StreamableFile, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Param, ParseIntPipe, Post, Req, Res, StreamableFile, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileService } from 'src/file/services/file/file.service';
 import { Express, Response } from 'express';
@@ -16,17 +16,20 @@ export class FileController {
   }
 
   @Get(':id')
-  async getDatabaseFileById(@Param('id', ParseIntPipe) id: number, @Res({ passthrough: true }) response: Response) {
+  async getDatabaseFileById(@Param('id') id: number, @Res({ passthrough: true }) response: Response) {
     const file = await this.FileService.getFileById(id);
+    
+    if (file) {
+      const stream = Readable.from(file.data);
  
-    const stream = Readable.from(file.data);
- 
-    response.set({
-      'Content-Disposition': `inline; filename="${file.filename}"`,
-      'Content-Type': 'image'
-    })
- 
-    return new StreamableFile(stream);
+      response.set({
+        'Content-Disposition': `inline; filename="${file.filename}"`,
+        'Content-Type': 'image'
+      })
+   
+      return new StreamableFile(stream);
+    }
+    throw new NotFoundException('No img');
   }
 
 }

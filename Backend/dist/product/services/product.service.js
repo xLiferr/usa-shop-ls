@@ -18,14 +18,17 @@ const typeorm_1 = require("@nestjs/typeorm");
 const product_entity_1 = require("../../entities/product.entity");
 const typeorm_2 = require("typeorm");
 const product_category_entity_1 = require("../../entities/product_category.entity");
+const file_service_1 = require("../../file/services/file/file.service");
 let ProductService = class ProductService {
-    constructor(productsRepo, productsCategoryRepo) {
+    constructor(productsRepo, fileService, productsCategoryRepo, connection) {
         this.productsRepo = productsRepo;
+        this.fileService = fileService;
         this.productsCategoryRepo = productsCategoryRepo;
+        this.connection = connection;
     }
     getProducts() {
         return this.productsRepo.find({
-            relations: ['category'],
+            relations: ['category', 'file'],
             where: {
                 stock: (0, typeorm_2.MoreThan)(0),
             }
@@ -71,6 +74,31 @@ let ProductService = class ProductService {
         this.productsRepo.merge(product, body);
         return await this.productsRepo.save(product);
     }
+    async addImg(productId, imageBuffer, filename) {
+        const queryRunner = this.connection.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+        try {
+            const product = await queryRunner.manager.findOne(product_entity_1.Product, productId);
+            const currentAvatarId = product.avatar_id;
+            const avatar = await this.fileService.uploadDatabaseFileWithQueryRunner(imageBuffer, filename, queryRunner);
+            await queryRunner.manager.update(product_entity_1.Product, productId, {
+                avatar_id: avatar.id
+            });
+            if (currentAvatarId) {
+                await this.fileService.deleteFileWithQueryRunner(currentAvatarId, queryRunner);
+            }
+            await queryRunner.commitTransaction();
+            return avatar;
+        }
+        catch (_a) {
+            await queryRunner.rollbackTransaction();
+            throw new common_1.InternalServerErrorException();
+        }
+        finally {
+            await queryRunner.release();
+        }
+    }
     async delete(id) {
         return await this.productsRepo.delete(id);
     }
@@ -78,9 +106,11 @@ let ProductService = class ProductService {
 ProductService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
-    __param(1, (0, typeorm_1.InjectRepository)(product_category_entity_1.Product_category)),
+    __param(2, (0, typeorm_1.InjectRepository)(product_category_entity_1.Product_category)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository])
+        file_service_1.FileService,
+        typeorm_2.Repository,
+        typeorm_2.Connection])
 ], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

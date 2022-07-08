@@ -1,17 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Product } from './product.entity';
  
 @Entity()
 export class File {
   @PrimaryGeneratedColumn()
   id: number
- 
-  @Column()
+  
+  @Column( {unique: true} )
   filename: string
  
   @Column({
     type: 'bytea',
   })
   data: Uint8Array
+
 }
 
  
