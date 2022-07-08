@@ -4,7 +4,7 @@ import "./style.css";
 
 export const ProductCard = ({product}) => {
   return (
-    <Link className="prodCard-bg" to="/">
+    <Link className="prodCard-bg" to={`/products/${product.id}`}>
       <div className="prodCard-section">
         <img src='' alt="" />
       </div>
