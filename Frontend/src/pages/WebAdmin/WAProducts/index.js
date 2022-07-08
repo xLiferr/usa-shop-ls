@@ -7,10 +7,9 @@ import "./style.css";
 import { Footer } from "../../../components/Footer";
 import { SidebarWA } from "../../../components/SidebarWA";
 import { ProductForm } from "../../../components/ProductForm";
+import { WAProductCard } from "./WAProductCard";
 // Icons
 import search from "../../../images/search-ib.png";
-import deleteIcon from "../../../images/delete.png";
-import editIcon from "../../../images/edit.png";
 import addProducts from "../../../images/add.png";
 import back from "../../../images/back.png";
 
@@ -21,6 +20,7 @@ export const WAProducts = () => {
   const [categories, setCategories] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState({});
+  const [image, setImage] = useState("");
 
   const editHandler = (product) => {
     setSelectedProduct({ ...product });
@@ -45,17 +45,7 @@ export const WAProducts = () => {
   const showProducts = useMemo(() => {
     if (products.length > 0) {
       return filterProducts.map((product, key) => {
-        return (
-          <div className="wap-product" key={key}>
-            <div className="wap-product-image"></div>
-            <div className="wap-product-name"><h3>{product.name}</h3></div>
-            <div className="wap-product-price"><h4>${product.price}</h4></div>
-            <div className="wap-product-buttons">
-              <img src={editIcon} alt="" onClick={() => editHandler(product)} />
-              <img src={deleteIcon} alt="" onClick={() => deleteHandler(product)} />
-            </div>
-          </div>
-        )
+        return (<WAProductCard key={key} product={product} editHandler={editHandler} deleteHandler={deleteHandler}/>)
       })
     } else {
       return (

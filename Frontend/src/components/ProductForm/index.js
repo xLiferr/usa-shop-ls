@@ -11,6 +11,10 @@ import "./style.css";
 export const ProductForm = ({ product = {}, type }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [name, setName] = useState(product ? (product.name) : (""));
+  const [category, setCategory] = useState(product ? (product.category) : (-1));
+  const [stock, setStock] = useState(product ? (product.stock) : (-1));
+  const [price, setPrice] = useState(product ? (product.price) : (-1));
   const { user } = useAuth();
   const handleEdit = (event) => {
     event.preventDefault();
@@ -28,21 +32,37 @@ export const ProductForm = ({ product = {}, type }) => {
       if (response.status === 201) successModal('Producto modificado!', 'El producto se ha modificado correctamente.', true);
     }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar modificar el producto, Inténtelo nuevamente.') });
   }
+
+  const handleUploadImage = (id) => {
+    console.log(selectedImages[0])
+    let formDataImages = new FormData();
+    formDataImages.append("file", selectedImages[0]);
+    formDataImages.append("name", selectedImages[0].name);
+    console.log(formDataImages);
+    axios.post(`http://localhost:3001/products/${id}/img`, formDataImages).then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   const handleCreate = (event) => {
     event.preventDefault();
-    let formDataImages = new FormData();
-    selectedImages?.forEach((image) => {
-      formDataImages.append("images", image)
-    })
     axios.post("http://localhost:3001/products/create", {
       access_token: user.access_token,
-      name: product.name,
-      category: parseInt(product.category),
-      stock: parseInt(product.stock),
-      price: parseInt(product.price)
-    }).then((response) => {
-      if (response.status === 201) successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
-    }).catch((error) => { errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.') });
+      name: name,
+      category: parseInt(category),
+      stock: parseInt(stock),
+      price: parseInt(price)
+    }).then(async (response) => {
+      if (response.status === 201) {
+        handleUploadImage(response.data.id);
+        successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
+      }
+    }).catch((error) => { 
+      errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.');
+      console.log(error) 
+    });
   }
   const imageHandler = (event) => {
     if (selectedImages) setSelectedImages((previusImages) => previusImages.concat(Array.from(event.target.files)));
@@ -62,15 +82,15 @@ export const ProductForm = ({ product = {}, type }) => {
           <div>
             <div className="prodForm-form-item">
               <h4>Nombre</h4>
-              <input type="text" defaultValue={product.name} onChange={(e) => product.name = e.target.value} required placeholder="Ej: Mochila"/>
+              <input type="text" defaultValue={name} onChange={(e) => setName(e.target.value)} required placeholder="Ej: Mochila"/>
             </div>
             <div className="prodForm-form-item">
               <h4>Descripción</h4>
-              <textarea defaultValue={product.description} placeholder="Escriba la descripción de producto" onChange={(e) => product.description = e.target.value} required />
+              <textarea defaultValue={product.description} placeholder="Escriba la descripción de producto" onChange={(e) => product.description = e.target.value} />
             </div>
             <div className="prodForm-form-item">
               <h4>Categoría</h4>
-              <select defaultValue={product.category} required onChange={(e) => product.category = e.target.value}>
+              <select defaultValue={category} required onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Elegir categoría</option>
                 {categories.map((category, key) => {
                   return <option key={key} value={category.id}>{category.name}</option>
@@ -79,11 +99,11 @@ export const ProductForm = ({ product = {}, type }) => {
             </div>
             <div className="prodForm-form-item">
               <h4>Stock</h4>
-              <input type="number" min="1" defaultValue={product.stock} onChange={(e) => product.stock = e.target.value} placeholder="Ej: 20" required />
+              <input type="number" min="1" defaultValue={stock} onChange={(e) => setStock(e.target.value)} placeholder="Ej: 20" required />
             </div>
             <div className="prodForm-form-item">
               <h4>Precio</h4>
-              <input type="number" min="1" required defaultValue={product.price} onChange={(e) => product.price = e.target.value} placeholder="Ej: 19999" />
+              <input type="number" min="1" required defaultValue={price} onChange={(e) => setPrice(e.target.value)} placeholder="Ej: 19999" />
             </div>
             <div className="prodForm-form-item">
               <h4>Fotos</h4>
