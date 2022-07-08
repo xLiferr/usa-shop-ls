@@ -28,7 +28,8 @@ export const RegisterModal = ({ setOpenRegister }) => {
             password: password,
             name: name,
             second_name: secondName,
-            telephone: telephone
+            telephone: telephone,
+            type: "Cliente"
         }).then((response) => {
             if (response.status === 201) confirmRegister();              
         }).catch((error) => {

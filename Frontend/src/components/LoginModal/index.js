@@ -31,7 +31,7 @@ export const LoginModal = ({ setOpenLogin, setOpenRegister }) => {
       username: email,
       password: password
     }).then((response) => {
-      if (response.status === 201) confirmLogin(response.data.access_token, response.data.id, "Administrador");
+      if (response.status === 201) confirmLogin(response.data.access_token, response.data.id, response.data.type);
     }).catch((error) => {
       if (error.response.status === 401) denyLogin();
     })
