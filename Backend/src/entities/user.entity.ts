@@ -21,4 +21,7 @@ export class User {
   @Column()
   telephone: string
 
+  @Column( { nullable:true } )
+  type: string
+
 }

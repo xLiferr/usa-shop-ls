@@ -34,9 +34,9 @@ let OrderDetailController = class OrderDetailController {
     deleteOrderDetail(id) {
         return this.orderDetailService.delete(id);
     }
-    registrarDatosCompra(body) {
+    registrarDatosCompra(req, res) {
         console.log("me llaman alguna vez");
-        return this.orderDetailService.crearBoleta(body);
+        return this.orderDetailService.createOrder(req, res);
     }
 };
 __decorate([
@@ -75,10 +75,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], OrderDetailController.prototype, "deleteOrderDetail", null);
 __decorate([
-    (0, common_1.Get)('compraaa'),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.Post)('crear-compra'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], OrderDetailController.prototype, "registrarDatosCompra", null);
 OrderDetailController = __decorate([

@@ -37,6 +37,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "telephone", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "type", void 0);
 User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);

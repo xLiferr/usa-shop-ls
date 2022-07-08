@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Order_detail = void 0;
 const typeorm_1 = require("typeorm");
-const payment_detail_entity_1 = require("./payment_detail.entity");
 const user_entity_1 = require("./user.entity");
 let Order_detail = class Order_detail {
 };
@@ -25,14 +24,21 @@ __decorate([
     __metadata("design:type", user_entity_1.User)
 ], Order_detail.prototype, "user", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => payment_detail_entity_1.Payment_detail, { nullable: true }),
-    (0, typeorm_1.JoinColumn)({ name: 'payment_id' }),
-    __metadata("design:type", payment_detail_entity_1.Payment_detail)
-], Order_detail.prototype, "payment", void 0);
-__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Order_detail.prototype, "total", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Date)
+], Order_detail.prototype, "date", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Order_detail.prototype, "flow_order", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], Order_detail.prototype, "status", void 0);
 Order_detail = __decorate([
     (0, typeorm_1.Entity)()
 ], Order_detail);

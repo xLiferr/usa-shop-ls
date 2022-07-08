@@ -1,7 +1,9 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Req, Res } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Order_detail } from 'src/entities/order_detail.entity';
 import { Repository } from 'typeorm';
+import { FlowApi } from '../flowApi';
+import { config } from '../flowApi';
 
 @Injectable()
 export class OrderDetailService {
@@ -55,7 +57,34 @@ export class OrderDetailService {
     return await this.orderDetailRepo.delete(id);
   }
 
-  async crearBoleta(body) {
-    console.log(body);
+  async createOrder(@Req() req, @Res() res) {
+    console.log(req);
+    const params = { 
+      commerceOrder: Math.floor(Math.random() * (2000 - 1100 + 1)) + 1100,
+      subject: "Pago de prueba",
+      currency: "CLP",
+      amount: 5000,
+      email: "dibiridap@gmail.com",
+      paymentMethod: 9,
+      urlConfirmation: config.baseURL + "/order_detail/compraaa",
+      urlReturn: config.redirectURL,
+    };
+
+    // Define el metodo a usar
+    const serviceName = "payment/create";
+
+    // Instancia la clase FlowApi
+    const flowApi = new FlowApi(config);
+    // Ejecuta el servicio
+
+    const response = await flowApi.send(serviceName, params, "POST");
+        //Prepara url para redireccionar el browser del pagador
+    const redirect = response.url + "?token=" + response.token;
+    console.log(redirect);
+    res.json({
+      redirect
+    });
+
   }
+
 }

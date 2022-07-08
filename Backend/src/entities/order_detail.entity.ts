@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Payment_detail } from "./payment_detail.entity";
 import { User } from "./user.entity";
 
 
@@ -12,12 +11,17 @@ export class Order_detail{
   @ManyToOne(() => User)
   @JoinColumn( {name: 'user_id'} )
   user: User
-
-  @OneToOne(() => Payment_detail, {nullable: true})
-  @JoinColumn( {name: 'payment_id'} )
-  payment: Payment_detail
   
   @Column()
   total: number
+
+  @Column()
+  date: Date
+
+  @Column()
+  flow_order: string
+
+  @Column( { nullable: true} )
+  status: number
 
 }

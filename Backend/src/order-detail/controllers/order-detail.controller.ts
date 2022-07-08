@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
 import { OrderDetailService } from '../services/order-detail.service';
 
 @Controller('order-detail')
@@ -30,9 +30,12 @@ export class OrderDetailController {
     return this.orderDetailService.delete(id);
   }
 
-  @Get('compraaa')
-  registrarDatosCompra(@Body() body) {
+  @Post('crear-compra')
+  registrarDatosCompra(@Req() req, @Res() res) {
     console.log("me llaman alguna vez");
-    return this.orderDetailService.crearBoleta(body);
+    return this.orderDetailService.createOrder(req,res);
   }
+
+
+
 }

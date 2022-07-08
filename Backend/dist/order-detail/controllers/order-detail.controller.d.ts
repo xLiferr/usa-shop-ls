@@ -7,5 +7,5 @@ export declare class OrderDetailController {
     createOrderDetail(body: any): Promise<import("../../entities/order_detail.entity").Order_detail>;
     updateOrderDetail(id: string, body: any): Promise<import("../../entities/order_detail.entity").Order_detail>;
     deleteOrderDetail(id: string): Promise<import("typeorm").DeleteResult>;
-    registrarDatosCompra(body: any): Promise<void>;
+    registrarDatosCompra(req: any, res: any): Promise<void>;
 }

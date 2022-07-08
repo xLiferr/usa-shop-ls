@@ -5,4 +5,5 @@ export declare class User {
     name: string;
     second_name: string;
     telephone: string;
+    type: string;
 }

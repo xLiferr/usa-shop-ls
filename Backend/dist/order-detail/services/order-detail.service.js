@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const order_detail_entity_1 = require("../../entities/order_detail.entity");
 const typeorm_2 = require("typeorm");
+const flowApi_1 = require("../flowApi");
+const flowApi_2 = require("../flowApi");
 let OrderDetailService = class OrderDetailService {
     constructor(orderDetailRepo) {
         this.orderDetailRepo = orderDetailRepo;
@@ -53,10 +55,35 @@ let OrderDetailService = class OrderDetailService {
     async delete(id) {
         return await this.orderDetailRepo.delete(id);
     }
-    async crearBoleta(body) {
-        console.log(body);
+    async createOrder(req, res) {
+        console.log(req);
+        const params = {
+            commerceOrder: Math.floor(Math.random() * (2000 - 1100 + 1)) + 1100,
+            subject: "Pago de prueba",
+            currency: "CLP",
+            amount: 5000,
+            email: "dibiridap@gmail.com",
+            paymentMethod: 9,
+            urlConfirmation: flowApi_2.config.baseURL + "/order_detail/compraaa",
+            urlReturn: flowApi_2.config.redirectURL,
+        };
+        const serviceName = "payment/create";
+        const flowApi = new flowApi_1.FlowApi(flowApi_2.config);
+        const response = await flowApi.send(serviceName, params, "POST");
+        const redirect = response.url + "?token=" + response.token;
+        console.log(redirect);
+        res.json({
+            redirect
+        });
     }
 };
+__decorate([
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], OrderDetailService.prototype, "createOrder", null);
 OrderDetailService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(order_detail_entity_1.Order_detail)),

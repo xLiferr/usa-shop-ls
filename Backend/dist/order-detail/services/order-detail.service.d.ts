@@ -9,5 +9,5 @@ export declare class OrderDetailService {
     create(body: any): Promise<Order_detail>;
     update(id: any, body: any): Promise<Order_detail>;
     delete(id: any): Promise<import("typeorm").DeleteResult>;
-    crearBoleta(body: any): Promise<void>;
+    createOrder(req: any, res: any): Promise<void>;
 }

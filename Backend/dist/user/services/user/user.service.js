@@ -38,6 +38,7 @@ let UserService = class UserService {
         newUser.name = body.name;
         newUser.second_name = body.second_name;
         newUser.telephone = body.telephone;
+        newUser.type = body.type;
         const searchUser = await this.usersRepo.findOne({
             where: { username: newUser.username }
         });
