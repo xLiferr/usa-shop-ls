@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useAuth } from "../../hooks/useAuth";
 import "./style.css";
+import 'boxicons';
 // Icons
 import logo from "../../images/logo.png";
 import carrito from "../../images/carrito.png";
@@ -27,6 +28,7 @@ export const Header = () => {
     const toogleMenu = () =>{
         setMenu(!menu);
     }
+    const [carrito] = value.carrito;
 
 
     const handleChange = e => {
@@ -51,7 +53,8 @@ export const Header = () => {
                     </Link>
                 ) : ("")}
                 <div className="header-button" onClick={toogleMenu}>
-                    <img src={carrito} alt='' className="header-carritoIMG"/>
+                    <box-icon name='cart'></box-icon>
+                    <span> {carrito.length} </span>
                 </div>
                 <button className="header-button" onClick={async () => await logout()}>
                     <img src={logoutIcon} alt="Cerrar sesión" className="bn-modal" />

@@ -13,7 +13,7 @@ export const ProductDetail = () => {
   const [cart, setCart] = useState([]);
   const value = useContext(DataContext);
   const [productos] = value.productos;
-  console.log('productosss',productos);
+  const addCarrito = value.addCarrito;
 
 
 
@@ -51,7 +51,7 @@ export const ProductDetail = () => {
           <h2> PRECIO: $ {product.price}</h2>
           <h2> STOCK: {product.stock}</h2>
           <div className='btn-cart'>
-            <button className='btn-cart-a'> Añadir al carrito </button>
+            <button className='btn-cart-a' onClick={() => addCarrito(product.id)}> Añadir al carrito </button>
           </div>
         </div>
       </div>
