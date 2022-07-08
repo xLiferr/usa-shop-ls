@@ -4,6 +4,7 @@ import MGN from "../../images/MGN.jpg";
 import 'boxicons';
 import  DataContext  from '../../context/DataProvider';
 import { askModal, successModal2, errorModal } from "../../utils/infoModals";
+import { CartProduct } from './CartProduct';
 
 
 
@@ -89,22 +90,8 @@ export const Carrito = () => {
             {carrito.length === 0 ? <h2 style={{
                     textAlign: 'center', fontSize: "3rem"
                 }}> CARRITO VACÍO </h2>:<>
-                {carrito.map((producto) =>(
-                    <div className='carrito-item' key={producto.id}>
-                        <img src={MGN} alt=''/>
-                        <div>
-                            <h3> {producto.name} </h3>
-                            <p className='price'>${producto.price}</p>
-                        </div>
-                        <div className='carrito-arrows'>
-                            <box-icon name='up-arrow' type = 'solid' onClick = {() => suma(producto.id)}></box-icon> 
-                            <p className='cantidad'> {producto.stock}</p>
-                            <box-icon name='down-arrow' type = 'solid' onClick = {() => resta(producto.id)}></box-icon> 
-                        </div>
-                        <div className='remove-item' onClick={() => handleDelete(producto.id)}>
-                            <box-icon name='trash'></box-icon>
-                        </div>
-                    </div>
+                {carrito.map((producto, key) =>(
+                    <CartProduct key={key} product={producto} handleDelete={handleDelete} suma={suma} resta={resta}/>
                 ))}
             </>
             }
