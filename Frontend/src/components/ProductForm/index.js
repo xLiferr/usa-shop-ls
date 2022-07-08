@@ -34,15 +34,14 @@ export const ProductForm = ({ product = {}, type }) => {
   }
 
   const handleUploadImage = (id) => {
-    console.log(selectedImages[0])
     let formDataImages = new FormData();
     formDataImages.append("file", selectedImages[0]);
     formDataImages.append("name", selectedImages[0].name);
     console.log(formDataImages);
     axios.post(`http://localhost:3001/products/${id}/img`, formDataImages).then((response) => {
-      console.log(response)
+      if (response.status === 201) successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
     }).catch((error) => {
-      console.log(error);
+      errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.'); 
     })
   }
 
@@ -57,11 +56,9 @@ export const ProductForm = ({ product = {}, type }) => {
     }).then(async (response) => {
       if (response.status === 201) {
         handleUploadImage(response.data.id);
-        successModal('Producto creado!', 'El producto se ha creado correctamente.', true);
       }
     }).catch((error) => { 
-      errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.');
-      console.log(error) 
+      errorModal('Error inesperado!', 'Hubo un error al intentar crear el producto, Inténtelo nuevamente.'); 
     });
   }
   const imageHandler = (event) => {
