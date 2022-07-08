@@ -53,6 +53,9 @@ let OrderDetailService = class OrderDetailService {
     async delete(id) {
         return await this.orderDetailRepo.delete(id);
     }
+    async crearBoleta(body) {
+        console.log(body);
+    }
 };
 OrderDetailService = __decorate([
     (0, common_1.Injectable)(),

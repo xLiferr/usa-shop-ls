@@ -34,6 +34,10 @@ let OrderDetailController = class OrderDetailController {
     deleteOrderDetail(id) {
         return this.orderDetailService.delete(id);
     }
+    registrarDatosCompra(body) {
+        console.log("me llaman alguna vez");
+        return this.orderDetailService.crearBoleta(body);
+    }
 };
 __decorate([
     (0, common_1.Get)('all'),
@@ -70,6 +74,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], OrderDetailController.prototype, "deleteOrderDetail", null);
+__decorate([
+    (0, common_1.Get)('compraaa'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], OrderDetailController.prototype, "registrarDatosCompra", null);
 OrderDetailController = __decorate([
     (0, common_1.Controller)('order-detail'),
     __metadata("design:paramtypes", [order_detail_service_1.OrderDetailService])

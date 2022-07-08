@@ -29,4 +29,10 @@ export class OrderDetailController {
   deleteOrderDetail(@Param('id') id: string) {
     return this.orderDetailService.delete(id);
   }
+
+  @Get('compraaa')
+  registrarDatosCompra(@Body() body) {
+    console.log("me llaman alguna vez");
+    return this.orderDetailService.crearBoleta(body);
+  }
 }

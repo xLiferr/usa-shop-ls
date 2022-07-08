@@ -54,4 +54,8 @@ export class OrderDetailService {
   async delete(id) {
     return await this.orderDetailRepo.delete(id);
   }
+
+  async crearBoleta(body) {
+    console.log(body);
+  }
 }
