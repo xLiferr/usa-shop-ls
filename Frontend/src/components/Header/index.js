@@ -45,7 +45,7 @@ export const Header = () => {
                     </div>
                 </Link>
                 {user.role.includes("Administrador") ? (
-                    <Link className="header-button" to="/web-admin">
+                    <Link className="header-button" to="/web-admin/productos">
                         <img src={webAdminBtn} alt="" className="bn-modal" />
                         <div className="bn-info">
                             <h3>Web admin</h3>

@@ -8,7 +8,6 @@ import { CreateAddress } from './pages/Profile/Addresses/CreateAddress';
 import { Shopping } from './pages/Profile/Shopping';
 import { ChangePassword } from './pages/Profile/ChangePassword'
 // Web Admin routes
-import { WebAdmin } from './pages/WebAdmin';
 import { WAAddProduct } from './pages/WebAdmin/WAAddProduct';
 import { WAProducts } from './pages/WebAdmin/WAProducts';
 import { WACategories } from './pages/WebAdmin/WACategories';
@@ -55,7 +54,6 @@ function App() {
                     <Route path="/carrito" element={<Cart />}></Route>
                   </Route>
                   <Route element={<ProtectedLayout allowedRoles={["Administrador"]} />}>
-                    <Route path="/web-admin" element={<WebAdmin />}></Route>
                     <Route path="/web-admin/agregar-producto" element={<WAAddProduct />}></Route>
                     <Route path="/web-admin/productos" element={<WAProducts />}></Route>
                     <Route path="/web-admin/categorias" element={<WACategories />}></Route>
