@@ -3,6 +3,7 @@ import './style.css';
 import MGN from "../../images/MGN.jpg";
 import 'boxicons';
 import  DataContext  from '../../context/DataProvider';
+import { askModal, successModal, errorModal } from "../../utils/infoModals";
 
 
 
@@ -13,6 +14,15 @@ export const Carrito = () => {
     const [carrito, setCarrito] = value.carrito;
     const [productos, setProductos] = useState([]);
     const [total] = value.total;
+
+
+    const handleDelete = async (id) => {
+        if (await askModal('¿Eliminar producto?', 'Si eliminas el producto, se eliminará de tu carrito.', 'No, mantener producto', 'Sí, eliminar producto')) {
+            removeProduct(id);
+            successModal("Producto eliminado!", "El producto fue eliminado correctamente", true);
+
+        }
+      }
 
     useEffect(() => {
         const getProduct =  async () => {
@@ -58,7 +68,6 @@ export const Carrito = () => {
     }
 
     const removeProduct = id => {
-        if(window.confirm("Quieres suspender el producto?")){
             carrito.forEach((item,index) => {
                 if(item.id === id){
                     item.stock = 1;
@@ -66,7 +75,6 @@ export const Carrito = () => {
                 }
             })
             setCarrito([...carrito])
-        }
     }
 
   return (
@@ -93,7 +101,7 @@ export const Carrito = () => {
                             <p className='cantidad'> {producto.stock}</p>
                             <box-icon name='down-arrow' type = 'solid' onClick = {() => resta(producto.id)}></box-icon> 
                         </div>
-                        <div className='remove-item' onClick={() => removeProduct(producto.id)}>
+                        <div className='remove-item' onClick={() => handleDelete(producto.id)}>
                             <box-icon name='trash'></box-icon>
                         </div>
                     </div>

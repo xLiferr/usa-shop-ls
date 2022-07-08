@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./style.css";
 import { NavLink } from 'react-router-dom';
+import DataContext, { DataProvider } from '../../context/DataProvider';
 
 
 export const Products = (generoFiltro) => {
@@ -10,6 +11,11 @@ export const Products = (generoFiltro) => {
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
   const genero = generoFiltro;
+  const [cart, setCart] = useState([]);
+  const value = useContext(DataContext);
+  const [productos] = value.productos;
+  const addCarrito = value.addCarrito;
+
   const filtro = data.filter((x)=>{
     if(filter !== -1){
       return x.gender === genero.generoFiltro && x.category.id === filter;
@@ -67,7 +73,7 @@ export const Products = (generoFiltro) => {
         return(
           <>
               <div className="producto" key={i}>
-                <a href="#">
+                <a href={`/products/${product.id}`}>
                   <div className="producto-img">
                     <img src='' alt={product.name} />
                   </div>
@@ -79,7 +85,7 @@ export const Products = (generoFiltro) => {
                   <p className="precio"> ${product.price} </p>
                 </div>
                 <div className="buttom-add">
-                  <button className="btn-a">Añadir al carrito</button>
+                  <button className="btn-a" onClick={() => addCarrito(product.id)}>Añadir al carrito</button>
                 <div>
                 <NavLink to = {`/products/${product.id}`} className="btn-v">
                   Ver producto

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { askModal, successModal, errorModal } from "../utils/infoModals";
 
 const DataContext = createContext({});
 
@@ -27,7 +28,7 @@ export const DataProvider = (props) => {
             })
             setCarrito([...carrito, ...data]);
         }else{
-            alert('El producto ya se ha añadido al carrito');
+            errorModal('Error!', 'Ya ha añadido este producto, puede modificar la cantidad en el carrito.')
         }
     }
 

@@ -97,17 +97,6 @@ export const Header = () => {
                     <span> Productos en Chile son procesados en 2 - 5 días habiles </span>
                 </div>
             </div>
-            <div className="header-containerInput">
-                <input
-                    className="form-control inputBuscar"
-                    value={busqueda}
-                    placeholder="Buscar producto"
-                    onChange={handleChange}
-                />
-                <button className="btn btn-success">
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
-            </div>
             {showButtons}
             {openLogin && <LoginModal setOpenLogin={setOpenLogin} setOpenRegister={setOpenRegister} />}
             {openRegister && <RegisterModal setOpenRegister={setOpenRegister} />}
